@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>小熊英语游戏 · Bear’s English Playtime</title>
+  <meta name="description" content="跟小熊一起学动作、感觉和自我介绍。Unit 1 五个章节，听、做、说，一步一步来；进度保存在本机。">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#FBF1E2" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1E1813" media="(prefers-color-scheme: dark)">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="小熊英语">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/bear.css">
+  <link rel="stylesheet" href="css/screens.css">
+  <script>
+    (function () {
+      try {
+        var raw = localStorage.getItem('bearEnglish.state');
+        if (!raw) return;
+        var state = JSON.parse(raw);
+        var theme = state && state.settings && state.settings.theme;
+        if (theme === 'light' || theme === 'dark') {
+          document.documentElement.setAttribute('data-theme', theme);
+        }
+      } catch (err) {}
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#app">跳到学习内容</a>
+  <main id="app" tabindex="-1"></main>
+  <div id="overlay-root"></div>
+  <div id="toast-root" aria-live="polite" aria-atomic="false"></div>
+  <div id="sr-live" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+  <noscript>
+    <div class="noscript">
+      <h1>需要打开 JavaScript</h1>
+      <p>小熊的故事和声音需要浏览器的 JavaScript 才能播放。请在浏览器设置里允许 JavaScript，然后刷新页面。</p>
+    </div>
+  </noscript>
+
+  <script defer src="data/audio.js"></script>
+  <script defer src="data/units/unit1.js"></script>
+  <script defer src="data/units/index.js"></script>
+  <script defer src="js/icons.js"></script>
+  <script defer src="js/bear.js"></script>
+  <script defer src="js/store.js"></script>
+  <script defer src="js/sfx.js"></script>
+  <script defer src="js/audio.js"></script>
+  <script defer src="js/recorder.js"></script>
+  <script defer src="js/content.js"></script>
+  <script defer src="js/ui.js"></script>
+  <script defer src="js/games/kit.js"></script>
+  <script defer src="js/games/find-it.js"></script>
+  <script defer src="js/games/do-it.js"></script>
+  <script defer src="js/games/face-match.js"></script>
+  <script defer src="js/games/intro-chat.js"></script>
+  <script defer src="js/games/say-it.js"></script>
+  <script defer src="js/screens/home.js"></script>
+  <script defer src="js/screens/chapter.js"></script>
+  <script defer src="js/screens/playground.js"></script>
+  <script defer src="js/screens/stickers.js"></script>
+  <script defer src="js/screens/parent.js"></script>
+  <script defer src="js/router.js"></script>
+  <script defer src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,659 @@
+/* =========================================================================
+   Bear illustration system + inline icon baseline
+   Scoped to .bear-* and .icon only. No external assets or fonts.
+   ========================================================================= */
+
+.bear-svg {
+  --bear-ink: var(--ink, #4a2c1a);
+  --bear-surface: var(--surface, #fffcf5);
+  --bear-line: var(--line, #d9c3aa);
+  --bear-action: var(--action, #a94a18);
+  --bear-leaf: var(--leaf, #3f6b48);
+  --bear-leaf-light: #6faf7c;
+  --bear-sun: var(--sun, #e9a52a);
+  --bear-sky: var(--sky, #4c7c94);
+  --bear-body: #e8864a;
+  --bear-soft: #c68b59;
+  --bear-pad: #a8683a;
+  --bear-muzzle: #f6dfb8;
+  --bear-mouth: #b3363c;
+  --bear-cheek: #ff8fa3;
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  overflow: visible;
+  color: inherit;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.bear-stage,
+.bear-mini {
+  aspect-ratio: 340 / 360;
+}
+
+.bear-face {
+  aspect-ratio: 164 / 170;
+}
+
+.bear-svg * {
+  transform-box: view-box;
+}
+
+.bear-svg .bear-mv {
+  transform-origin: 170px 340px;
+}
+
+.bear-svg .bear-root {
+  transform-origin: 170px 250px;
+}
+
+.bear-svg .bear-head {
+  transform-origin: 170px 195px;
+}
+
+.bear-svg .bear-armL {
+  transform-origin: 118px 214px;
+}
+
+.bear-svg .bear-armR {
+  transform-origin: 222px 214px;
+}
+
+.bear-svg .bear-legL {
+  transform-origin: 144px 280px;
+}
+
+.bear-svg .bear-legR {
+  transform-origin: 196px 280px;
+}
+
+.bear-svg .bear-scarf {
+  transform-origin: 170px 198px;
+}
+
+/* ---- palette ---------------------------------------------------------- */
+
+.bear-svg .bear-fill-body { fill: var(--bear-body); }
+.bear-svg .bear-fill-soft { fill: var(--bear-soft); }
+.bear-svg .bear-fill-pad { fill: var(--bear-pad); }
+.bear-svg .bear-fill-muzzle { fill: var(--bear-muzzle); }
+.bear-svg .bear-fill-ink { fill: var(--bear-ink); }
+.bear-svg .bear-fill-mouth { fill: var(--bear-mouth); }
+.bear-svg .bear-fill-cheek { fill: var(--bear-cheek); }
+.bear-svg .bear-fill-sun { fill: var(--bear-sun); }
+.bear-svg .bear-fill-sky { fill: var(--bear-sky); }
+.bear-svg .bear-fill-leaf { fill: var(--bear-leaf); }
+.bear-svg .bear-fill-action { fill: var(--bear-action); }
+.bear-svg .bear-fill-line { fill: var(--bear-line); }
+.bear-svg .bear-fill-surface { fill: var(--bear-surface); }
+.bear-svg .bear-fill-scarf { fill: var(--bear-leaf); }
+.bear-svg .bear-fill-scarf-light { fill: var(--bear-leaf-light); }
+
+.bear-svg .bear-line-ink,
+.bear-svg .bear-line-pad,
+.bear-svg .bear-line-sky,
+.bear-svg .bear-line-action,
+.bear-svg .bear-line-leaf,
+.bear-svg .bear-line-scarf-light {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.bear-svg .bear-line-ink { stroke: var(--bear-ink); }
+.bear-svg .bear-line-pad { stroke: var(--bear-pad); }
+.bear-svg .bear-line-sky { stroke: var(--bear-sky); }
+.bear-svg .bear-line-action { stroke: var(--bear-action); }
+.bear-svg .bear-line-leaf { stroke: var(--bear-leaf); }
+.bear-svg .bear-line-scarf-light { stroke: var(--bear-leaf-light); }
+
+.bear-svg .bear-stroke-ink {
+  stroke: var(--bear-ink);
+  stroke-linejoin: round;
+}
+
+.bear-svg .bear-shadow {
+  fill: var(--bear-ink);
+}
+
+/* ---- faces ------------------------------------------------------------ */
+
+.bear-svg .bear-face {
+  display: none;
+}
+
+.bear-svg[data-face="normal"] .bear-face.face-normal,
+.bear-svg[data-face="happy"] .bear-face.face-happy,
+.bear-svg[data-face="sing"] .bear-face.face-sing,
+.bear-svg[data-face="sad"] .bear-face.face-sad,
+.bear-svg[data-face="angry"] .bear-face.face-angry,
+.bear-svg[data-face="hungry"] .bear-face.face-hungry,
+.bear-svg[data-face="sleepy"] .bear-face.face-sleepy {
+  display: inline;
+}
+
+.bear-svg .bear-sing-mouth {
+  opacity: 0;
+}
+
+.bear-svg[data-pose="sing"] .bear-sing-mouth {
+  opacity: 1;
+}
+
+.bear-svg[data-pose="sing"]:not([data-face="sing"]) .bear-mouth {
+  opacity: 0;
+}
+
+.bear-svg[data-face="sing"] .bear-sing-mouth {
+  opacity: 0;
+}
+
+/* ---- action props ----------------------------------------------------- */
+
+.bear-svg .bear-props .prop {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.bear-svg[data-pose="walk"] .prop-walk,
+.bear-svg[data-pose="run"] .prop-run,
+.bear-svg[data-pose="jump"] .prop-jump,
+.bear-svg[data-pose="clap"] .prop-clap,
+.bear-svg[data-pose="dance"] .prop-dance,
+.bear-svg[data-pose="dance"] .prop-music,
+.bear-svg[data-pose="sing"] .prop-music,
+.bear-svg[data-pose="kick"] .prop-kick,
+.bear-svg[data-pose="wave"] .prop-wave,
+.bear-svg[data-pose="wobble"] .prop-wobble,
+.bear-svg[data-pose="crawl"] .prop-crawl,
+.bear-svg[data-pose="point"] .prop-point,
+.bear-svg[data-pose="pat"] .prop-pat,
+.bear-svg[data-pose="shake"] .prop-shake,
+.bear-svg[data-pose="turn"] .prop-turn,
+.bear-svg[data-pose="snap"] .prop-snap,
+.bear-svg[data-pose="poke"] .prop-poke,
+.bear-svg[data-face="sleepy"] .prop-sleepy {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ---- static pose language (stage fallback, mini cards, face is preset) - */
+
+.bear-svg[data-pose="walk"] .bear-legL {
+  --bear-swing-from: 15deg;
+  --bear-swing-to: -15deg;
+  transform: rotate(15deg);
+}
+.bear-svg[data-pose="walk"] .bear-legR {
+  --bear-swing-from: -15deg;
+  --bear-swing-to: 15deg;
+  transform: rotate(-15deg);
+}
+.bear-svg[data-pose="walk"] .bear-armL {
+  --bear-swing-from: -14deg;
+  --bear-swing-to: 14deg;
+  transform: rotate(-14deg);
+}
+.bear-svg[data-pose="walk"] .bear-armR {
+  --bear-swing-from: 14deg;
+  --bear-swing-to: -14deg;
+  transform: rotate(14deg);
+}
+.bear-svg[data-pose="walk"] .bear-head { transform: rotate(-1.5deg); }
+
+.bear-svg[data-pose="run"] .bear-mv { transform: rotate(-7deg); }
+.bear-svg[data-pose="run"] .bear-legL {
+  --bear-swing-from: 36deg;
+  --bear-swing-to: -28deg;
+  transform: rotate(36deg);
+}
+.bear-svg[data-pose="run"] .bear-legR {
+  --bear-swing-from: -36deg;
+  --bear-swing-to: 28deg;
+  transform: rotate(-36deg);
+}
+.bear-svg[data-pose="run"] .bear-armL {
+  --bear-swing-from: -32deg;
+  --bear-swing-to: 24deg;
+  transform: rotate(-32deg);
+}
+.bear-svg[data-pose="run"] .bear-armR {
+  --bear-swing-from: 32deg;
+  --bear-swing-to: -24deg;
+  transform: rotate(32deg);
+}
+.bear-svg[data-pose="run"] .bear-head { transform: rotate(4deg); }
+
+.bear-svg[data-pose="jump"] .bear-mv { transform: translateY(-8px); }
+.bear-svg[data-pose="jump"] .bear-armL {
+  --bear-swing-from: 135deg;
+  --bear-swing-to: 150deg;
+  transform: rotate(135deg);
+}
+.bear-svg[data-pose="jump"] .bear-armR {
+  --bear-swing-from: -135deg;
+  --bear-swing-to: -150deg;
+  transform: rotate(-135deg);
+}
+.bear-svg[data-pose="jump"] .bear-legL { transform: translateY(-6px) rotate(12deg); }
+.bear-svg[data-pose="jump"] .bear-legR { transform: translateY(-6px) rotate(-12deg); }
+.bear-svg[data-pose="jump"] .bear-head { transform: rotate(-2deg); }
+
+.bear-svg[data-pose="clap"] .bear-armL {
+  --bear-swing-from: -60deg;
+  --bear-swing-to: -82deg;
+  transform: rotate(-60deg);
+}
+.bear-svg[data-pose="clap"] .bear-armR {
+  --bear-swing-from: 60deg;
+  --bear-swing-to: 82deg;
+  transform: rotate(60deg);
+}
+.bear-svg[data-pose="clap"] .bear-head { transform: rotate(-3deg); }
+.bear-svg[data-pose="clap"] .bear-legL { transform: rotate(4deg); }
+.bear-svg[data-pose="clap"] .bear-legR { transform: rotate(-4deg); }
+
+.bear-svg[data-pose="dance"] .bear-mv { transform: rotate(-3deg) translateY(-2px); }
+.bear-svg[data-pose="dance"] .bear-armL { transform: rotate(138deg); }
+.bear-svg[data-pose="dance"] .bear-armR { transform: rotate(-138deg); }
+.bear-svg[data-pose="dance"] .bear-legL { transform: rotate(-14deg); }
+.bear-svg[data-pose="dance"] .bear-legR { transform: rotate(9deg); }
+.bear-svg[data-pose="dance"] .bear-head { transform: rotate(5deg); }
+.bear-svg[data-pose="dance"] .bear-scarf { transform: rotate(-3deg); }
+
+.bear-svg[data-pose="sing"] .bear-armL { transform: rotate(34deg); }
+.bear-svg[data-pose="sing"] .bear-armR { transform: rotate(-34deg); }
+.bear-svg[data-pose="sing"] .bear-legL { transform: rotate(4deg); }
+.bear-svg[data-pose="sing"] .bear-legR { transform: rotate(-4deg); }
+.bear-svg[data-pose="sing"] .bear-head { transform: rotate(-5deg); }
+
+.bear-svg[data-pose="kick"] .bear-mv { transform: rotate(-4deg); }
+.bear-svg[data-pose="kick"] .bear-legR { transform: rotate(-72deg); }
+.bear-svg[data-pose="kick"] .bear-legL { transform: rotate(6deg); }
+.bear-svg[data-pose="kick"] .bear-armL { transform: rotate(33deg); }
+.bear-svg[data-pose="kick"] .bear-armR { transform: rotate(-30deg); }
+.bear-svg[data-pose="kick"] .bear-head { transform: rotate(2deg); }
+
+.bear-svg[data-pose="wave"] .bear-armR { transform: rotate(-138deg); }
+.bear-svg[data-pose="wave"] .bear-armL { transform: rotate(12deg); }
+.bear-svg[data-pose="wave"] .bear-head { transform: rotate(3deg); }
+
+.bear-svg[data-pose="wobble"] .bear-mv { transform: rotate(-6deg); }
+.bear-svg[data-pose="wobble"] .bear-head { transform: rotate(8deg); }
+.bear-svg[data-pose="wobble"] .bear-armL { transform: rotate(22deg); }
+.bear-svg[data-pose="wobble"] .bear-armR { transform: rotate(-20deg); }
+.bear-svg[data-pose="wobble"] .bear-legL { transform: rotate(4deg); }
+.bear-svg[data-pose="wobble"] .bear-legR { transform: rotate(-5deg); }
+
+.bear-svg[data-pose="crawl"] .bear-mv { transform: translateY(10px); }
+.bear-svg[data-pose="crawl"] .bear-root { transform: rotate(72deg); }
+.bear-svg[data-pose="crawl"] .bear-head { transform: rotate(-72deg); }
+.bear-svg[data-pose="crawl"] .bear-armL {
+  --bear-swing-from: -64deg;
+  --bear-swing-to: -76deg;
+  transform: rotate(-64deg);
+}
+.bear-svg[data-pose="crawl"] .bear-armR {
+  --bear-swing-from: -86deg;
+  --bear-swing-to: -68deg;
+  transform: rotate(-86deg);
+}
+.bear-svg[data-pose="crawl"] .bear-legL {
+  --bear-swing-from: -74deg;
+  --bear-swing-to: -58deg;
+  transform: rotate(-74deg);
+}
+.bear-svg[data-pose="crawl"] .bear-legR {
+  --bear-swing-from: -54deg;
+  --bear-swing-to: -78deg;
+  transform: rotate(-54deg);
+}
+
+.bear-svg[data-pose="point"] .bear-armR { transform: rotate(-92deg); }
+.bear-svg[data-pose="point"] .bear-armL { transform: rotate(10deg); }
+.bear-svg[data-pose="point"] .bear-head { transform: rotate(4deg); }
+
+.bear-svg[data-pose="pat"] .bear-armL {
+  --bear-swing-from: -52deg;
+  --bear-swing-to: -66deg;
+  transform: rotate(-52deg);
+}
+.bear-svg[data-pose="pat"] .bear-armR {
+  --bear-swing-from: 52deg;
+  --bear-swing-to: 66deg;
+  transform: rotate(52deg);
+}
+.bear-svg[data-pose="pat"] .bear-head { transform: rotate(-5deg); }
+
+.bear-svg[data-pose="shake"] .bear-mv { transform: translateX(-3px); }
+.bear-svg[data-pose="shake"] .bear-head { transform: rotate(-2deg); }
+.bear-svg[data-pose="shake"] .bear-armL { transform: rotate(24deg); }
+.bear-svg[data-pose="shake"] .bear-armR { transform: rotate(-24deg); }
+.bear-svg[data-pose="shake"] .bear-legL { transform: rotate(4deg); }
+.bear-svg[data-pose="shake"] .bear-legR { transform: rotate(-4deg); }
+
+.bear-svg[data-pose="turn"] .bear-root { transform: rotate(-3deg); }
+.bear-svg[data-pose="turn"] .bear-head { transform: rotate(4deg); }
+.bear-svg[data-pose="turn"] .bear-armL { transform: rotate(10deg); }
+.bear-svg[data-pose="turn"] .bear-armR { transform: rotate(-10deg); }
+
+.bear-svg[data-pose="snap"] .bear-mv { transform: rotate(-1deg); }
+.bear-svg[data-pose="snap"] .bear-armR { transform: rotate(-145deg); }
+.bear-svg[data-pose="snap"] .bear-armL { transform: rotate(18deg); }
+.bear-svg[data-pose="snap"] .bear-head { transform: rotate(-3deg); }
+
+.bear-svg[data-pose="poke"] .bear-mv { transform: rotate(-2deg); }
+.bear-svg[data-pose="poke"] .bear-armR { transform: rotate(-122deg); }
+.bear-svg[data-pose="poke"] .bear-armL { transform: rotate(8deg); }
+.bear-svg[data-pose="poke"] .bear-head { transform: rotate(5deg); }
+
+/* ---- one-shot action animations (stage only) -------------------------- */
+
+@keyframes bear-swing {
+  0%, 100% { transform: rotate(var(--bear-swing-from, 0deg)); }
+  50% { transform: rotate(var(--bear-swing-to, 0deg)); }
+}
+
+@keyframes bear-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes bear-jump {
+  0%, 100% { transform: translateY(-8px) scale(0.99, 1.01); }
+  24% { transform: translateY(0) scale(1.06, 0.92); }
+  58% { transform: translateY(-58px) scale(0.97, 1.04); }
+  78% { transform: translateY(-16px) scale(1.02, 0.98); }
+}
+
+@keyframes bear-sway {
+  0%, 100% { transform: rotate(-3deg) translateY(-2px); }
+  50% { transform: rotate(4deg) translateY(-6px); }
+}
+
+@keyframes bear-sing-head {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(-1deg); }
+}
+
+@keyframes bear-sing-mouth {
+  0% { transform: scaleY(0.78) scaleX(1); }
+  50% { transform: scaleY(1.1) scaleX(0.92); }
+  100% { transform: scaleY(1) scaleX(1); }
+}
+
+@keyframes bear-kick-leg {
+  0%, 100% { transform: rotate(-72deg); }
+  42% { transform: rotate(-103deg); }
+  65% { transform: rotate(-52deg); }
+}
+
+@keyframes bear-kick-ball {
+  0%, 36%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.95; }
+  56% { transform: translate(38px, -58px) rotate(112deg); opacity: 1; }
+  76% { transform: translate(44px, -18px) rotate(174deg); opacity: 0.95; }
+}
+
+@keyframes bear-wave-arm {
+  0%, 100% { transform: rotate(-138deg); }
+  30% { transform: rotate(-126deg); }
+  65% { transform: rotate(-150deg); }
+}
+
+@keyframes bear-wobble-body {
+  0%, 100% { transform: rotate(-6deg); }
+  34% { transform: rotate(5deg); }
+  68% { transform: rotate(-3deg); }
+}
+
+@keyframes bear-wobble-head {
+  0%, 100% { transform: rotate(8deg); }
+  34% { transform: rotate(-3deg); }
+  68% { transform: rotate(5deg); }
+}
+
+@keyframes bear-crawl-glide {
+  0%, 100% { transform: translate(0, 10px); }
+  50% { transform: translate(9px, 7px); }
+}
+
+@keyframes bear-point-arm {
+  0%, 100% { transform: rotate(-92deg); }
+  50% { transform: rotate(-99deg); }
+}
+
+@keyframes bear-soft-pulse {
+  0% { opacity: 0.55; transform: scale(0.78); }
+  50% { opacity: 1; transform: scale(1.08); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes bear-heartbeat {
+  0% { transform: scale(0.94); }
+  50% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+@keyframes bear-shake-body {
+  0%, 100% { transform: translateX(-3px); }
+  22% { transform: translateX(3px); }
+  44% { transform: translateX(-2px); }
+  66% { transform: translateX(2px); }
+}
+
+@keyframes bear-turn-body {
+  0%, 100% { transform: rotate(-3deg) scaleX(1); }
+  25% { transform: rotate(-1deg) scaleX(0.86); }
+  50% { transform: rotate(1deg) scaleX(0.18); }
+  75% { transform: rotate(-1deg) scaleX(0.86); }
+}
+
+@keyframes bear-turn-arrow {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bear-snap-arm {
+  0%, 100% { transform: rotate(-145deg); }
+  30% { transform: rotate(-134deg); }
+  54% { transform: rotate(-149deg); }
+}
+
+@keyframes bear-poke-arm {
+  0%, 100% { transform: rotate(-122deg); }
+  50% { transform: rotate(-129deg); }
+}
+
+@keyframes bear-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+.bear-stage.is-action:not(.is-static)[data-pose="walk"] .bear-legL,
+.bear-stage.is-action:not(.is-static)[data-pose="walk"] .bear-legR,
+.bear-stage.is-action:not(.is-static)[data-pose="walk"] .bear-armL,
+.bear-stage.is-action:not(.is-static)[data-pose="walk"] .bear-armR {
+  animation: bear-swing 0.95s ease-in-out 2 both;
+}
+.bear-stage.is-action:not(.is-static)[data-pose="walk"] .bear-root {
+  animation: bear-bob 0.95s ease-in-out 2 both;
+}
+
+.bear-stage.is-action:not(.is-static)[data-pose="run"] .bear-legL,
+.bear-stage.is-action:not(.is-static)[data-pose="run"] .bear-legR,
+.bear-stage.is-action:not(.is-static)[data-pose="run"] .bear-armL,
+.bear-stage.is-action:not(.is-static)[data-pose="run"] .bear-armR {
+  animation: bear-swing 0.62s ease-in-out 2 both;
+}
+.bear-stage.is-action:not(.is-static)[data-pose="run"] .bear-root {
+  animation: bear-bob 0.62s ease-in-out 2 both;
+}
+
+.bear-stage.is-action:not(.is-static)[data-pose="jump"] .bear-mv {
+  animation: bear-jump 1.15s cubic-bezier(0.3, 0.7, 0.25, 1) 2 both;
+}
+.bear-stage.is-action:not(.is-static)[data-pose="jump"] .bear-armL,
+.bear-stage.is-action:not(.is-static)[data-pose="jump"] .bear-armR {
+  animation: bear-swing 1.15s ease-in-out 2 both;
+}
+
+.bear-stage.is-action:not(.is-static)[data-pose="clap"] .bear-armL,
+.bear-stage.is-action:not(.is-static)[data-pose="clap"] .bear-armR {
+  animation: bear-swing 0.65s ease-in-out 2 both;
+}
+.bear-stage.is-action:not(.is-static)[data-pose="clap"] .prop-clap {
+  animation: bear-soft-pulse 0.65s ease-in-out 2 both;
+}
+
+.bear-stage.is-action:not(.is-static)[data-pose="dance"] .bear-mv {
+  animation: bear-sway 1.15s ease-in-out 2 both;
+}
+.bear-stage.is-action:not(.is-static)[data-pose="dance"] .prop-music {
+  animation: bear-float 1.15s ease-in-out 2 both;
+}
+.bear-stage.is-action:not(.is-static)[data-pose="dance"] .prop-dance {
+  animation: bear-soft-pulse 1.15s ease-in-out 2 both;
+}
+
+.bear-stage.is-action:not(.is-static)[data-pose="sing"] .bear-head {
+  animation: bear-sing-head 1.2s ease-in-out 2 both;
+}
+.bear-stage.is-action:not(.is-static)[data-pose="sing"] .bear-sing-mouth {
+  animation: bear-sing-mouth 0.6s ease-in-out 2 both;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.bear-stage.is-action:not(.is-static)[data-pose="sing"] .prop-music {
+  animation: bear-float 1.2s ease-in-out 2 both;
+}
+
+.bear-stage.is-action:not(.is-static)[data-pose="kick"] .bear-legR {
+  animation: bear-kick-leg 1.05s ease-in-out 2 both;
+}
+.bear-stage.is-action:not(.is-static)[data-pose="kick"] .prop-kick-ball {
+  animation: bear-kick-ball 1.05s ease-in-out 2 both;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.bear-stage.is-action:not(.is-static)[data-pose="wave"] .bear-armR {
+  animation: bear-wave-arm 0.8s ease-in-out 2 both;
+}
+.bear-stage.is-action:not(.is-static)[data-pose="wave"] .prop-wave {
+  animation: bear-soft-pulse 0.8s ease-in-out 2 both;
+}
+
+.bear-stage.is-action:not(.is-static)[data-pose="wobble"] .bear-mv {
+  animation: bear-wobble-body 1.2s ease-in-out 2 both;
+}
+.bear-stage.is-action:not(.is-static)[data-pose="wobble"] .bear-head {
+  animation: bear-wobble-head 1.2s ease-in-out 2 both;
+}
+
+.bear-stage.is-action:not(.is-static)[data-pose="crawl"] .bear-legL,
+.bear-stage.is-action:not(.is-static)[data-pose="crawl"] .bear-legR,
+.bear-stage.is-action:not(.is-static)[data-pose="crawl"] .bear-armL,
+.bear-stage.is-action:not(.is-static)[data-pose="crawl"] .bear-armR {
+  animation: bear-swing 0.8s ease-in-out 2 both;
+}
+.bear-stage.is-action:not(.is-static)[data-pose="crawl"] .bear-mv {
+  animation: bear-crawl-glide 1.6s ease-in-out 2 both;
+}
+
+.bear-stage.is-action:not(.is-static)[data-pose="point"] .bear-armR {
+  animation: bear-point-arm 0.8s ease-in-out 2 both;
+}
+.bear-stage.is-action:not(.is-static)[data-pose="point"] .prop-point-dot {
+  animation: bear-soft-pulse 0.8s ease-in-out 2 both;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.bear-stage.is-action:not(.is-static)[data-pose="pat"] .bear-armL,
+.bear-stage.is-action:not(.is-static)[data-pose="pat"] .bear-armR {
+  animation: bear-swing 0.55s ease-in-out 2 both;
+}
+.bear-stage.is-action:not(.is-static)[data-pose="pat"] .prop-heart {
+  animation: bear-heartbeat 0.55s ease-in-out 2 both;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.bear-stage.is-action:not(.is-static)[data-pose="shake"] .bear-mv {
+  animation: bear-shake-body 0.6s ease-in-out 2 both;
+}
+
+.bear-stage.is-action:not(.is-static)[data-pose="turn"] .bear-root {
+  animation: bear-turn-body 1.6s ease-in-out 2 both;
+}
+.bear-stage.is-action:not(.is-static)[data-pose="turn"] .prop-turn-arrow {
+  animation: bear-turn-arrow 1.6s linear 2 both;
+  transform-origin: 282px 95px;
+}
+
+.bear-stage.is-action:not(.is-static)[data-pose="snap"] .bear-armR {
+  animation: bear-snap-arm 0.55s ease-in-out 2 both;
+}
+.bear-stage.is-action:not(.is-static)[data-pose="snap"] .prop-snap {
+  animation: bear-soft-pulse 0.55s ease-in-out 2 both;
+}
+
+.bear-stage.is-action:not(.is-static)[data-pose="poke"] .bear-armR {
+  animation: bear-poke-arm 0.9s ease-in-out 2 both;
+}
+.bear-stage.is-action:not(.is-static)[data-pose="poke"] .prop-poke-balloon {
+  animation: bear-soft-pulse 0.9s ease-in-out 2 both;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* Pulse targets have a useful transform origin and are decorative. */
+.bear-stage .prop-clap,
+.bear-stage .prop-dance,
+.bear-stage .prop-wave,
+.bear-stage .prop-snap {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* ---- reduced motion: static pose + at most a 120ms opacity change ----- */
+
+@keyframes bear-reduced-fade {
+  from { opacity: 0.25; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bear-stage.is-action {
+    animation: bear-reduced-fade 120ms ease-out 1 both;
+  }
+  .bear-stage.is-action * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+body.reduce-motion .bear-stage.is-action,
+.reduce-motion .bear-stage.is-action,
+html.reduce-motion .bear-stage.is-action {
+  animation: bear-reduced-fade 120ms ease-out 1 both;
+}
+
+body.reduce-motion .bear-stage.is-action *,
+.reduce-motion .bear-stage.is-action *,
+html.reduce-motion .bear-stage.is-action * {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* ---- icon baseline ---------------------------------------------------- */
+
+.icon {
+  display: inline-block;
+  flex: none;
+  vertical-align: -0.15em;
+  overflow: visible;
+  -webkit-user-select: none;
+  user-select: none;
+}

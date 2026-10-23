@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-32 -32 576 576" width="512" height="512" role="img" aria-label="小熊英语">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0" stop-color="#FFF7E9"/>
+      <stop offset="1" stop-color="#F4DFC0"/>
+    </linearGradient>
+    <linearGradient id="fur" x1="0.2" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#F19A5B"/>
+      <stop offset="1" stop-color="#DA7740"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="-32" y="-32" width="576" height="576" fill="url(#bg)"/>
+  <circle cx="398" cy="112" r="86" fill="#F4CE7E" opacity=".55"/>
+  <circle cx="398" cy="112" r="58" fill="#E9A52A" opacity=".35"/>
+
+  <path d="M-32 410C80 330 190 320 288 350 380 378 470 360 544 320V544H-32Z" fill="#DDE8C8" opacity=".72"/>
+  <path d="M-32 462C70 420 160 420 256 448 360 478 460 460 544 420V544H-32Z" fill="#BFD6B1" opacity=".5"/>
+
+  <g transform="translate(256 262)">
+    <circle cx="-122" cy="-124" r="64" fill="#C68B59"/>
+    <circle cx="-122" cy="-124" r="34" fill="#F6DFB8"/>
+    <circle cx="122" cy="-124" r="64" fill="#C68B59"/>
+    <circle cx="122" cy="-124" r="34" fill="#F6DFB8"/>
+
+    <circle cx="0" cy="0" r="164" fill="url(#fur)"/>
+    <ellipse cx="0" cy="62" rx="92" ry="72" fill="#F6DFB8"/>
+    <path d="M-44 80q44 34 88 0-8 46-44 46T-44 80Z" fill="#F6DFB8"/>
+
+    <circle cx="-62" cy="-28" r="14" fill="#3A2A1F"/>
+    <circle cx="62" cy="-28" r="14" fill="#3A2A1F"/>
+    <circle cx="-57" cy="-33" r="4.6" fill="#FFFCF5"/>
+    <circle cx="67" cy="-33" r="4.6" fill="#FFFCF5"/>
+    <circle cx="-100" cy="36" r="22" fill="#FF8FA3" opacity=".55"/>
+    <circle cx="100" cy="36" r="22" fill="#FF8FA3" opacity=".55"/>
+
+    <ellipse cx="0" cy="37" rx="24" ry="17" fill="#3A2A1F"/>
+    <ellipse cx="0" cy="32" rx="7" ry="4.5" fill="#FFFCF5" opacity=".5"/>
+    <path d="M0 54v14M0 68q-18 20-36 2M0 68q18 20 36 2" fill="none" stroke="#3A2A1F" stroke-width="9" stroke-linecap="round"/>
+
+    <path d="M-158 -54c-16-46-2-86 28-104 16 30 24 62 22 96Z" fill="#5C8A5E"/>
+    <path d="M-142 -66c-6-30 2-58 20-74" fill="none" stroke="#8FBF8B" stroke-width="8" stroke-linecap="round" opacity=".8"/>
+    <g transform="translate(128 -92) rotate(18)">
+      <path d="M0 0C46-26 88-12 92 26 52 46 16 38 0 0Z" fill="#E9A52A"/>
+      <path d="M8 4c30-14 58-8 70 12" fill="none" stroke="#F7D694" stroke-width="7" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <g transform="translate(256 410)">
+    <path d="M-155 18c26 54 110 76 155 76S129 72 155 18c-42 26-268 26-310 0Z" fill="#3F6B48"/>
+    <path d="M-118 30c58 22 178 22 236 0" fill="none" stroke="#8FBF8B" stroke-width="10" stroke-linecap="round" opacity=".55"/>
+    <path d="M104 58c34 20 42 58 24 84-10 14-30 6-28-10 2-22-4-44-18-58Z" fill="#3F6B48"/>
+    <path d="M114 78c14 18 12 34 2 46" fill="none" stroke="#8FBF8B" stroke-width="9" stroke-linecap="round" opacity=".5"/>
+  </g>
+</svg>
