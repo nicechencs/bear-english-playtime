@@ -54,6 +54,12 @@
   --tap: 64px;
   --tap-xl: 72px;
   --tap-min: 44px;
+  --kid-card-gap: 14px;
+  --kid-card-radius: 24px;
+  --kid-card-min: clamp(168px, 46vw, 210px);
+  --kid-card-art: clamp(96px, 32vw, 136px);
+  --kid-card-en: clamp(1.04rem, 0.98rem + 0.35vw, 1.18rem);
+  --kid-card-zh: clamp(0.84rem, 0.8rem + 0.2vw, 0.94rem);
 
   --font-en: 'Fredoka', 'Trebuchet MS', 'Segoe UI', sans-serif;
   --font-zh: 'PingFang SC', 'HarmonyOS Sans SC', 'Hiragino Sans GB',

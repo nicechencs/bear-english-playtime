@@ -1,7 +1,7 @@
 /* Offline shell + audio. Bump VERSION whenever shipped files change. */
 importScripts('./data/audio.js');
 
-const VERSION = '1.0.2';
+const VERSION = '1.0.3';
 const SHELL_CACHE = 'bear-shell-' + VERSION;
 const AUDIO_CACHE = 'bear-audio-' + VERSION;
 const SHELL_PREFIX = 'bear-shell-';

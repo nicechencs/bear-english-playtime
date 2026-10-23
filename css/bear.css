@@ -108,6 +108,12 @@
 .bear-svg .bear-line-leaf { stroke: var(--bear-leaf); }
 .bear-svg .bear-line-scarf-light { stroke: var(--bear-leaf-light); }
 
+.bear-svg .bear-poke-finger {
+  fill: none;
+  stroke: var(--bear-body);
+  stroke-linecap: round;
+}
+
 .bear-svg .bear-stroke-ink {
   stroke: var(--bear-ink);
   stroke-linejoin: round;
@@ -179,89 +185,109 @@
   visibility: visible;
 }
 
+/* ---- action hand glyphs ---------------------------------------------- */
+
+.bear-svg .bear-hand {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.bear-svg[data-pose="point"] .bear-hand--point,
+.bear-svg[data-pose="snap"] .bear-hand--snap,
+.bear-svg[data-pose="poke"] .bear-hand--poke,
+.bear-svg[data-pose="pat"] .bear-armR .bear-hand--pat {
+  opacity: 1;
+  visibility: visible;
+}
+
 /* ---- static pose language (stage fallback, mini cards, face is preset) - */
 
 .bear-svg[data-pose="walk"] .bear-legL {
-  --bear-swing-from: 15deg;
-  --bear-swing-to: -15deg;
-  transform: rotate(15deg);
+  --bear-swing-from: 10deg;
+  --bear-swing-to: 20deg;
+  transform: translate(-3px, -9px) rotate(12deg);
 }
 .bear-svg[data-pose="walk"] .bear-legR {
-  --bear-swing-from: -15deg;
-  --bear-swing-to: 15deg;
-  transform: rotate(-15deg);
+  --bear-swing-from: -8deg;
+  --bear-swing-to: -2deg;
+  transform: rotate(-6deg);
 }
 .bear-svg[data-pose="walk"] .bear-armL {
-  --bear-swing-from: -14deg;
-  --bear-swing-to: 14deg;
-  transform: rotate(-14deg);
+  --bear-swing-from: 22deg;
+  --bear-swing-to: 10deg;
+  transform: rotate(18deg);
 }
 .bear-svg[data-pose="walk"] .bear-armR {
-  --bear-swing-from: 14deg;
-  --bear-swing-to: -14deg;
-  transform: rotate(14deg);
+  --bear-swing-from: 20deg;
+  --bear-swing-to: 30deg;
+  transform: rotate(26deg);
 }
 .bear-svg[data-pose="walk"] .bear-head { transform: rotate(-1.5deg); }
 
 .bear-svg[data-pose="run"] .bear-mv { transform: rotate(-7deg); }
 .bear-svg[data-pose="run"] .bear-legL {
-  --bear-swing-from: 36deg;
-  --bear-swing-to: -28deg;
-  transform: rotate(36deg);
+  --bear-swing-from: 20deg;
+  --bear-swing-to: 34deg;
+  transform: translateY(-10px) rotate(26deg);
 }
 .bear-svg[data-pose="run"] .bear-legR {
-  --bear-swing-from: -36deg;
-  --bear-swing-to: 28deg;
-  transform: rotate(-36deg);
+  --bear-swing-from: -22deg;
+  --bear-swing-to: -12deg;
+  transform: rotate(-20deg);
 }
 .bear-svg[data-pose="run"] .bear-armL {
-  --bear-swing-from: -32deg;
-  --bear-swing-to: 24deg;
-  transform: rotate(-32deg);
+  --bear-swing-from: 34deg;
+  --bear-swing-to: 44deg;
+  transform: rotate(38deg);
 }
 .bear-svg[data-pose="run"] .bear-armR {
-  --bear-swing-from: 32deg;
-  --bear-swing-to: -24deg;
-  transform: rotate(32deg);
+  --bear-swing-from: 8deg;
+  --bear-swing-to: 20deg;
+  transform: rotate(14deg);
 }
 .bear-svg[data-pose="run"] .bear-head { transform: rotate(4deg); }
 
-.bear-svg[data-pose="jump"] .bear-mv { transform: translateY(-8px); }
+.bear-svg[data-pose="jump"] .bear-mv { transform: translateY(-24px); }
 .bear-svg[data-pose="jump"] .bear-armL {
-  --bear-swing-from: 135deg;
-  --bear-swing-to: 150deg;
-  transform: rotate(135deg);
+  --bear-swing-from: 138deg;
+  --bear-swing-to: 154deg;
+  transform: rotate(148deg);
 }
 .bear-svg[data-pose="jump"] .bear-armR {
-  --bear-swing-from: -135deg;
-  --bear-swing-to: -150deg;
-  transform: rotate(-135deg);
+  --bear-swing-from: -112deg;
+  --bear-swing-to: -128deg;
+  transform: rotate(-120deg);
 }
-.bear-svg[data-pose="jump"] .bear-legL { transform: translateY(-6px) rotate(12deg); }
-.bear-svg[data-pose="jump"] .bear-legR { transform: translateY(-6px) rotate(-12deg); }
+.bear-svg[data-pose="jump"] .bear-legL { transform: translateY(-10px) rotate(22deg); }
+.bear-svg[data-pose="jump"] .bear-legR { transform: translateY(-12px) rotate(-18deg); }
 .bear-svg[data-pose="jump"] .bear-head { transform: rotate(-2deg); }
+.bear-svg[data-pose="jump"] .bear-shadow {
+  opacity: 0.06;
+  transform: scale(0.72);
+  transform-origin: 170px 345px;
+}
 
 .bear-svg[data-pose="clap"] .bear-armL {
-  --bear-swing-from: -60deg;
-  --bear-swing-to: -82deg;
-  transform: rotate(-60deg);
+  --bear-swing-from: -30deg;
+  --bear-swing-to: -42deg;
+  transform: rotate(-36deg);
 }
 .bear-svg[data-pose="clap"] .bear-armR {
-  --bear-swing-from: 60deg;
-  --bear-swing-to: 82deg;
-  transform: rotate(60deg);
+  --bear-swing-from: 30deg;
+  --bear-swing-to: 42deg;
+  transform: rotate(36deg);
 }
 .bear-svg[data-pose="clap"] .bear-head { transform: rotate(-3deg); }
 .bear-svg[data-pose="clap"] .bear-legL { transform: rotate(4deg); }
 .bear-svg[data-pose="clap"] .bear-legR { transform: rotate(-4deg); }
 
-.bear-svg[data-pose="dance"] .bear-mv { transform: rotate(-3deg) translateY(-2px); }
-.bear-svg[data-pose="dance"] .bear-armL { transform: rotate(138deg); }
-.bear-svg[data-pose="dance"] .bear-armR { transform: rotate(-138deg); }
-.bear-svg[data-pose="dance"] .bear-legL { transform: rotate(-14deg); }
-.bear-svg[data-pose="dance"] .bear-legR { transform: rotate(9deg); }
-.bear-svg[data-pose="dance"] .bear-head { transform: rotate(5deg); }
-.bear-svg[data-pose="dance"] .bear-scarf { transform: rotate(-3deg); }
+.bear-svg[data-pose="dance"] .bear-mv { transform: rotate(-6deg) translate(3px, -2px); }
+.bear-svg[data-pose="dance"] .bear-armL { transform: rotate(66deg); }
+.bear-svg[data-pose="dance"] .bear-armR { transform: rotate(-140deg); }
+.bear-svg[data-pose="dance"] .bear-legL { transform: rotate(-18deg); }
+.bear-svg[data-pose="dance"] .bear-legR { transform: rotate(12deg); }
+.bear-svg[data-pose="dance"] .bear-head { transform: rotate(6deg); }
+.bear-svg[data-pose="dance"] .bear-scarf { transform: rotate(-5deg); }
 
 .bear-svg[data-pose="sing"] .bear-armL { transform: rotate(34deg); }
 .bear-svg[data-pose="sing"] .bear-armR { transform: rotate(-34deg); }
@@ -270,77 +296,88 @@
 .bear-svg[data-pose="sing"] .bear-head { transform: rotate(-5deg); }
 
 .bear-svg[data-pose="kick"] .bear-mv { transform: rotate(-4deg); }
-.bear-svg[data-pose="kick"] .bear-legR { transform: rotate(-72deg); }
+.bear-svg[data-pose="kick"] .bear-legR { transform: rotate(-55deg); }
 .bear-svg[data-pose="kick"] .bear-legL { transform: rotate(6deg); }
-.bear-svg[data-pose="kick"] .bear-armL { transform: rotate(33deg); }
-.bear-svg[data-pose="kick"] .bear-armR { transform: rotate(-30deg); }
+.bear-svg[data-pose="kick"] .bear-armL { transform: rotate(38deg); }
+.bear-svg[data-pose="kick"] .bear-armR { transform: rotate(-44deg); }
 .bear-svg[data-pose="kick"] .bear-head { transform: rotate(2deg); }
 
 .bear-svg[data-pose="wave"] .bear-armR { transform: rotate(-138deg); }
 .bear-svg[data-pose="wave"] .bear-armL { transform: rotate(12deg); }
 .bear-svg[data-pose="wave"] .bear-head { transform: rotate(3deg); }
 
-.bear-svg[data-pose="wobble"] .bear-mv { transform: rotate(-6deg); }
-.bear-svg[data-pose="wobble"] .bear-head { transform: rotate(8deg); }
-.bear-svg[data-pose="wobble"] .bear-armL { transform: rotate(22deg); }
-.bear-svg[data-pose="wobble"] .bear-armR { transform: rotate(-20deg); }
-.bear-svg[data-pose="wobble"] .bear-legL { transform: rotate(4deg); }
-.bear-svg[data-pose="wobble"] .bear-legR { transform: rotate(-5deg); }
+.bear-svg[data-pose="wobble"] .bear-mv { transform: rotate(-11deg) translateX(-2px); }
+.bear-svg[data-pose="wobble"] .bear-head { transform: rotate(3deg); }
+.bear-svg[data-pose="wobble"] .bear-armL { transform: rotate(36deg); }
+.bear-svg[data-pose="wobble"] .bear-armR { transform: rotate(-15deg); }
+.bear-svg[data-pose="wobble"] .bear-legL { transform: rotate(6deg); }
+.bear-svg[data-pose="wobble"] .bear-legR { transform: rotate(-7deg); }
 
 .bear-svg[data-pose="crawl"] .bear-mv { transform: translateY(10px); }
 .bear-svg[data-pose="crawl"] .bear-root { transform: rotate(72deg); }
 .bear-svg[data-pose="crawl"] .bear-head { transform: rotate(-72deg); }
 .bear-svg[data-pose="crawl"] .bear-armL {
-  --bear-swing-from: -64deg;
-  --bear-swing-to: -76deg;
-  transform: rotate(-64deg);
+  --bear-swing-from: -68deg;
+  --bear-swing-to: -80deg;
+  transform: rotate(-68deg);
 }
 .bear-svg[data-pose="crawl"] .bear-armR {
-  --bear-swing-from: -86deg;
-  --bear-swing-to: -68deg;
-  transform: rotate(-86deg);
+  --bear-swing-from: -88deg;
+  --bear-swing-to: -70deg;
+  transform: rotate(-88deg);
 }
 .bear-svg[data-pose="crawl"] .bear-legL {
-  --bear-swing-from: -74deg;
-  --bear-swing-to: -58deg;
-  transform: rotate(-74deg);
+  --bear-swing-from: -78deg;
+  --bear-swing-to: -62deg;
+  transform: rotate(-78deg);
 }
 .bear-svg[data-pose="crawl"] .bear-legR {
-  --bear-swing-from: -54deg;
-  --bear-swing-to: -78deg;
-  transform: rotate(-54deg);
+  --bear-swing-from: -58deg;
+  --bear-swing-to: -82deg;
+  transform: rotate(-58deg);
 }
 
 .bear-svg[data-pose="point"] .bear-armR { transform: rotate(-92deg); }
 .bear-svg[data-pose="point"] .bear-armL { transform: rotate(10deg); }
 .bear-svg[data-pose="point"] .bear-head { transform: rotate(4deg); }
 
-.bear-svg[data-pose="pat"] .bear-armL {
-  --bear-swing-from: -52deg;
-  --bear-swing-to: -66deg;
-  transform: rotate(-52deg);
-}
+.bear-svg[data-pose="pat"] .bear-armL { transform: rotate(8deg); }
 .bear-svg[data-pose="pat"] .bear-armR {
-  --bear-swing-from: 52deg;
-  --bear-swing-to: 66deg;
-  transform: rotate(52deg);
+  --bear-swing-from: 70deg;
+  --bear-swing-to: 60deg;
+  transform: rotate(70deg);
 }
 .bear-svg[data-pose="pat"] .bear-head { transform: rotate(-5deg); }
 
 .bear-svg[data-pose="shake"] .bear-mv { transform: translateX(-3px); }
 .bear-svg[data-pose="shake"] .bear-head { transform: rotate(-2deg); }
-.bear-svg[data-pose="shake"] .bear-armL { transform: rotate(24deg); }
-.bear-svg[data-pose="shake"] .bear-armR { transform: rotate(-24deg); }
+.bear-svg[data-pose="shake"] .bear-armL {
+  --bear-swing-from: 75deg;
+  --bear-swing-to: 68deg;
+  transform: rotate(75deg);
+}
+.bear-svg[data-pose="shake"] .bear-armR {
+  --bear-swing-from: -75deg;
+  --bear-swing-to: -68deg;
+  transform: rotate(-75deg);
+}
 .bear-svg[data-pose="shake"] .bear-legL { transform: rotate(4deg); }
 .bear-svg[data-pose="shake"] .bear-legR { transform: rotate(-4deg); }
 
-.bear-svg[data-pose="turn"] .bear-root { transform: rotate(-3deg); }
-.bear-svg[data-pose="turn"] .bear-head { transform: rotate(4deg); }
-.bear-svg[data-pose="turn"] .bear-armL { transform: rotate(10deg); }
-.bear-svg[data-pose="turn"] .bear-armR { transform: rotate(-10deg); }
+.bear-svg[data-pose="turn"] .bear-root { transform: rotate(-3deg) scaleX(0.88); }
+.bear-svg[data-pose="turn"] .bear-head { transform: rotate(4deg) scaleX(1.08); }
+.bear-svg[data-pose="turn"] .bear-armL { transform: rotate(14deg); }
+.bear-svg[data-pose="turn"] .bear-armR { transform: rotate(-14deg); }
+.bear-svg[data-pose="turn"] .bear-legL { transform: rotate(-14deg); }
+.bear-svg[data-pose="turn"] .bear-legR { transform: rotate(10deg); }
+.bear-svg[data-pose="turn"] .bear-scarf { transform: rotate(7deg); }
 
 .bear-svg[data-pose="snap"] .bear-mv { transform: rotate(-1deg); }
-.bear-svg[data-pose="snap"] .bear-armR { transform: rotate(-145deg); }
+.bear-svg[data-pose="snap"] .bear-armR {
+  --bear-swing-from: -65deg;
+  --bear-swing-to: -57deg;
+  transform: rotate(-65deg);
+}
 .bear-svg[data-pose="snap"] .bear-armL { transform: rotate(18deg); }
 .bear-svg[data-pose="snap"] .bear-head { transform: rotate(-3deg); }
 
@@ -369,8 +406,8 @@
 }
 
 @keyframes bear-sway {
-  0%, 100% { transform: rotate(-3deg) translateY(-2px); }
-  50% { transform: rotate(4deg) translateY(-6px); }
+  0%, 100% { transform: rotate(-6deg) translate(3px, -2px); }
+  50% { transform: rotate(2deg) translate(5px, -6px); }
 }
 
 @keyframes bear-sing-head {
@@ -421,7 +458,7 @@
 
 @keyframes bear-point-arm {
   0%, 100% { transform: rotate(-92deg); }
-  50% { transform: rotate(-99deg); }
+  50% { transform: rotate(-96deg); }
 }
 
 @keyframes bear-soft-pulse {
@@ -437,17 +474,17 @@
 }
 
 @keyframes bear-shake-body {
-  0%, 100% { transform: translateX(-3px); }
-  22% { transform: translateX(3px); }
-  44% { transform: translateX(-2px); }
-  66% { transform: translateX(2px); }
+  0%, 100% { transform: translateX(-8px); }
+  22% { transform: translateX(8px); }
+  44% { transform: translateX(-6px); }
+  66% { transform: translateX(6px); }
 }
 
 @keyframes bear-turn-body {
-  0%, 100% { transform: rotate(-3deg) scaleX(1); }
-  25% { transform: rotate(-1deg) scaleX(0.86); }
-  50% { transform: rotate(1deg) scaleX(0.18); }
-  75% { transform: rotate(-1deg) scaleX(0.86); }
+  0%, 100% { transform: rotate(-3deg) scaleX(0.88); }
+  25% { transform: rotate(-1deg) scaleX(0.72); }
+  50% { transform: rotate(1deg) scaleX(0.56); }
+  75% { transform: rotate(-1deg) scaleX(0.72); }
 }
 
 @keyframes bear-turn-arrow {
@@ -455,14 +492,14 @@
 }
 
 @keyframes bear-snap-arm {
-  0%, 100% { transform: rotate(-145deg); }
-  30% { transform: rotate(-134deg); }
-  54% { transform: rotate(-149deg); }
+  0%, 100% { transform: rotate(-65deg); }
+  30% { transform: rotate(-55deg); }
+  54% { transform: rotate(-69deg); }
 }
 
 @keyframes bear-poke-arm {
   0%, 100% { transform: rotate(-122deg); }
-  50% { transform: rotate(-129deg); }
+  50% { transform: rotate(-124deg); }
 }
 
 @keyframes bear-float {
@@ -570,7 +607,6 @@
   transform-origin: center;
 }
 
-.bear-stage.is-action:not(.is-static)[data-pose="pat"] .bear-armL,
 .bear-stage.is-action:not(.is-static)[data-pose="pat"] .bear-armR {
   animation: bear-swing 0.55s ease-in-out 2 both;
 }
@@ -589,7 +625,7 @@
 }
 .bear-stage.is-action:not(.is-static)[data-pose="turn"] .prop-turn-arrow {
   animation: bear-turn-arrow 1.6s linear 2 both;
-  transform-origin: 282px 95px;
+  transform-origin: 170px 321px;
 }
 
 .bear-stage.is-action:not(.is-static)[data-pose="snap"] .bear-armR {
