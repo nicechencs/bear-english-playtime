@@ -144,6 +144,20 @@
   height: 28px;
 }
 
+.kid-action .btn__icon {
+  width: 34px;
+  height: 34px;
+}
+
+.kid-audio .btn__icon {
+  width: 30px;
+  height: 30px;
+}
+
+.kid-action .btn__label {
+  font-size: 0.94em;
+}
+
 .btn__label {
   display: inline-block;
 }

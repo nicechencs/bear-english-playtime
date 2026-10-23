@@ -102,13 +102,14 @@
       label: '再听一次',
       iconName: 'replay',
       variant: 'secondary',
+      className: 'kid-audio',
       onClick: () => { if (!answered) playPrompt(true); }
     });
     nextBtn = ui.button({
       label: '下一个',
       iconName: 'arrow-right',
       variant: 'primary',
-      className: 'btn--block',
+      className: 'btn--block kid-action',
       onClick: () => advance()
     });
     nextBtn.hidden = true;
@@ -167,7 +168,7 @@
           type: 'button',
           class: 'choice',
           'data-id': option.id,
-          'aria-label': '第 ' + (i + 1) + ' 个图片选项'
+          'aria-label': '第 ' + (i + 1) + ' 个图片选项，' + option.en + '，' + option.zh
         });
         const art = ui.el('span', { class: 'choice__art' }, kit.bearMini({ pose: option.pose, face: option.face }));
         const label = ui.el('span', { class: 'choice__label', 'aria-hidden': 'true' }, [

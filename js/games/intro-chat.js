@@ -120,6 +120,16 @@
       return content.answerLabel(unit, answer);
     }
 
+    function answerArt(answer) {
+      if (answer.item && unit.items[answer.item]) {
+        const item = unit.items[answer.item];
+        return item.kind === 'feeling'
+          ? kit.bearFace({ face: item.face })
+          : kit.bearMini({ pose: item.pose, face: item.face });
+      }
+      return kit.bearMini({ pose: answer.phrase === 'a_girl' ? 'point' : 'wave', face: 'happy' });
+    }
+
     function renderTurn() {
       const turn = currentTurn();
       if (!turn) {
@@ -154,12 +164,30 @@
       const wordAnswers = [];
       answers.forEach((answer, i) => {
         const label = labelFor(answer);
-        const card = ui.el('button', { type: 'button', class: 'answer-card' });
+        const card = ui.el('button', {
+          type: 'button',
+          class: 'answer-card',
+          'aria-label': '听示范回答：' + label.en + '，' + label.zh
+        });
         card.appendChild(ui.el('span', { class: 'answer-card__icon', 'aria-hidden': 'true' }, ui.icon('speaker')));
+        const art = ui.el('span', { class: 'answer-card__art', 'aria-hidden': 'true' }, answerArt(answer));
+        if (answer.phrase === 'a_age') {
+          const age = label.en.match(/\b(\d+)\b/);
+          if (age) art.appendChild(ui.el('span', { class: 'answer-card__number', text: age[1] }));
+        }
+        if (answer.phrase === 'a_name') {
+          const name = label.en.match(/My name is\s+([^.!?]+)/i);
+          if (name) art.appendChild(ui.el('span', { class: 'answer-card__name', lang: 'en', text: name[1].trim() }));
+        }
+        if (answer.word) art.appendChild(ui.el('span', { class: 'answer-card__word-cue', 'aria-hidden': 'true' }, [
+          ui.icon('speaker'), ui.el('span', { lang: 'en', text: answer.word })
+        ]));
+        card.appendChild(art);
         card.appendChild(ui.el('span', { class: 'answer-card__text' }, [
           ui.el('span', { class: 'answer-card__en en', lang: 'en', text: label.en }),
           ui.el('span', { class: 'answer-card__zh', text: label.zh })
         ]));
+        card.setAttribute('aria-pressed', 'false');
         card.addEventListener('click', () => chooseAnswer(i, card, answer));
         answerList.appendChild(card);
         if (answer.word) wordAnswers.push(answer.word);
@@ -192,10 +220,16 @@
     function chooseAnswer(i, card, answer) {
       if (!session.alive) return;
       selected = i;
-      Array.prototype.forEach.call(answerList.children, (node) => node.classList.remove('answer-card--selected'));
+      Array.prototype.forEach.call(answerList.children, (node) => {
+        node.classList.remove('answer-card--selected');
+        node.setAttribute('aria-pressed', 'false');
+      });
       card.classList.add('answer-card--selected');
+      card.setAttribute('aria-pressed', 'true');
       const key = content.answerAudioKey(unit, answer);
-      if (key) BEAR.audio.play(key);
+      if (answer.word && unit.phrases[answer.word] && key) {
+        BEAR.audio.playSequence([unit.phrases[answer.word].audio, key]);
+      } else if (key) BEAR.audio.play(key);
       if (answer.item) {
         const item = unit.items[answer.item];
         if (item) kit.setBear(stageSvg, item.pose || item.id, item.face || 'happy');
@@ -203,7 +237,7 @@
         kit.setBear(stageSvg, 'wave', 'happy');
       }
       nextBtn.disabled = false;
-      nextBtn.focus({ preventScroll: true });
+      nextBtn.classList.add('kid-action');
       const label = labelFor(answer);
       kit.setFeedback(feedback, '轮到你们了：' + label.en, 'soft');
       ui.announce('示范回答：' + label.en);

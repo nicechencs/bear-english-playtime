@@ -22,7 +22,9 @@
     game.appendChild(say);
 
     const stage = ui.el('div', { class: 'say__stage' });
-    stage.appendChild(kit.bearStage({ pose: 'wave', face: 'happy' }));
+    const itemKey = (sampleKey || '').match(/^(?:can|feel|im)_(.+)$/);
+    const sampleItem = itemKey && unit.items[itemKey[1]];
+    stage.appendChild(kit.bearStage({ pose: kit.activityPose(activity, unit), face: sampleItem ? sampleItem.face : 'happy' }));
     say.appendChild(stage);
     say.appendChild(ui.el('p', { class: 'say__kicker', text: activity.prompt || '轮到你了' }));
     say.appendChild(ui.el('p', { class: 'say__en', lang: 'en', text: activity.en }));
@@ -33,6 +35,7 @@
       label: '听示范',
       iconName: 'speaker',
       variant: 'secondary',
+      className: 'kid-audio',
       onClick: () => playSample()
     });
     sampleRow.appendChild(sampleBtn);
@@ -140,6 +143,7 @@
       iconName: 'arrow-right',
       variant: 'primary',
       size: 'xl',
+      className: 'kid-action',
       onClick: () => finish()
     });
     actions.appendChild(doneBtn);

@@ -64,10 +64,10 @@
 
   const phrases = {
     q_name: phrase('q_name', "What's your name?", '你叫什么名字？'),
-    a_name: phrase('a_name', 'My name is …', '我叫……', '音频示范留白；家长说孩子的名字，或让孩子只说名字。'),
+    a_name: phrase('a_name', 'My name is George.', '我叫 George。', '原录音只说 My name is …，没有 George；停顿时请家长示范 George，孩子只说名字也可以。'),
     q_how: phrase('q_how', 'How are you?', '你好吗？'),
     q_age: phrase('q_age', 'How old are you?', '你几岁了？'),
-    a_age: phrase('a_age', 'I am 3 years old.', '我三岁。', '音频固定为 3 岁；请按孩子实际年龄示范。'),
+    a_age: phrase('a_age', 'I am 3 years old.', '我三岁。', 'George 今年 3 岁；原录音正好示范 I am 3 years old.。'),
     q_bg: phrase('q_bg', 'Are you a boy or a girl?', '你是男孩还是女孩？'),
     a_girl: phrase('a_girl', 'I am a girl.', '我是女孩。'),
     a_boy: phrase('a_boy', 'I am a boy.', '我是男孩。'),
@@ -125,7 +125,7 @@
                     q: 'q_name',
                     answers: [{ phrase: 'a_name' }],
                     zh: '你叫什么名字？',
-                    note: '家长示范：My name is … + 孩子的名字。'
+                    note: '原录音在 My name is … 处停顿；请家长接着示范 George，孩子可以只说 George。'
                   },
                   {
                     q: 'q_how',
@@ -138,7 +138,7 @@
                   }
                 ]
               },
-              say('a_name', 'My name is …', '我叫……', '轮到你说名字了', '家长先示范，孩子只说自己的名字也可以。')
+              say('a_name', 'My name is George.', '我叫 George。', '轮到 George 说名字了', '原录音在名字处停顿，家长接着示范 George；孩子只说 George 也可以。')
             ]
           },
           {
@@ -153,7 +153,7 @@
                     q: 'q_age',
                     answers: [{ phrase: 'a_age' }],
                     zh: '你几岁了？',
-                    note: '音频示范是 3 岁；请按孩子实际年龄说。'
+                    note: 'George 今年 3 岁，跟着原录音说 I am 3 years old.。'
                   },
                   {
                     q: 'q_bg',

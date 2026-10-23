@@ -76,7 +76,7 @@
         const card = ui.el('button', {
           type: 'button',
           class: 'face-card',
-          'aria-label': '第 ' + (i + 1) + ' 张表情'
+          'aria-label': '第 ' + (i + 1) + ' 张表情，' + item.en + '，' + item.zh
         });
         card.appendChild(ui.el('span', {
           class: 'face-card__art'
@@ -107,7 +107,7 @@
         iconName: 'arrow-right',
         variant: 'primary',
         size: 'xl',
-        className: 'btn--block',
+        className: 'btn--block kid-action',
         onClick: () => {
           if (!session.alive) return;
           BEAR.audio.stopAll();
@@ -162,6 +162,7 @@
         label: '再听一次',
         iconName: 'replay',
         variant: 'secondary',
+        className: 'kid-audio',
         onClick: () => {
           if (!answered) playPrompt();
         }
@@ -170,7 +171,7 @@
         label: '下一个',
         iconName: 'arrow-right',
         variant: 'primary',
-        className: 'btn--block',
+        className: 'btn--block kid-action',
         onClick: () => advance()
       });
       nextBtn.hidden = true;
@@ -222,7 +223,7 @@
           type: 'button',
           class: 'face-card',
           'data-id': choice.id,
-          'aria-label': '第 ' + (i + 1) + ' 个表情'
+          'aria-label': '第 ' + (i + 1) + ' 个表情，' + choice.en + '，' + choice.zh
         });
         card.appendChild(ui.el('span', {
           class: 'face-card__art'

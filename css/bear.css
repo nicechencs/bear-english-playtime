@@ -108,12 +108,6 @@
 .bear-svg .bear-line-leaf { stroke: var(--bear-leaf); }
 .bear-svg .bear-line-scarf-light { stroke: var(--bear-leaf-light); }
 
-.bear-svg .bear-poke-finger {
-  fill: none;
-  stroke: var(--bear-body);
-  stroke-linecap: round;
-}
-
 .bear-svg .bear-stroke-ink {
   stroke: var(--bear-ink);
   stroke-linejoin: round;
@@ -203,47 +197,47 @@
 /* ---- static pose language (stage fallback, mini cards, face is preset) - */
 
 .bear-svg[data-pose="walk"] .bear-legL {
-  --bear-swing-from: 10deg;
-  --bear-swing-to: 20deg;
-  transform: translate(-3px, -9px) rotate(12deg);
+  --bear-swing-from: 20deg;
+  --bear-swing-to: -18deg;
+  transform: rotate(20deg);
 }
 .bear-svg[data-pose="walk"] .bear-legR {
-  --bear-swing-from: -8deg;
-  --bear-swing-to: -2deg;
-  transform: rotate(-6deg);
+  --bear-swing-from: -20deg;
+  --bear-swing-to: 18deg;
+  transform: rotate(-20deg);
 }
 .bear-svg[data-pose="walk"] .bear-armL {
-  --bear-swing-from: 22deg;
-  --bear-swing-to: 10deg;
-  transform: rotate(18deg);
+  --bear-swing-from: -26deg;
+  --bear-swing-to: 24deg;
+  transform: rotate(-26deg);
 }
 .bear-svg[data-pose="walk"] .bear-armR {
-  --bear-swing-from: 20deg;
-  --bear-swing-to: 30deg;
+  --bear-swing-from: 26deg;
+  --bear-swing-to: -24deg;
   transform: rotate(26deg);
 }
 .bear-svg[data-pose="walk"] .bear-head { transform: rotate(-1.5deg); }
 
 .bear-svg[data-pose="run"] .bear-mv { transform: rotate(-7deg); }
 .bear-svg[data-pose="run"] .bear-legL {
-  --bear-swing-from: 20deg;
-  --bear-swing-to: 34deg;
-  transform: translateY(-10px) rotate(26deg);
+  --bear-swing-from: 38deg;
+  --bear-swing-to: -34deg;
+  transform: translateY(-10px) rotate(38deg);
 }
 .bear-svg[data-pose="run"] .bear-legR {
-  --bear-swing-from: -22deg;
-  --bear-swing-to: -12deg;
-  transform: rotate(-20deg);
+  --bear-swing-from: -38deg;
+  --bear-swing-to: 34deg;
+  transform: rotate(-38deg);
 }
 .bear-svg[data-pose="run"] .bear-armL {
-  --bear-swing-from: 34deg;
-  --bear-swing-to: 44deg;
-  transform: rotate(38deg);
+  --bear-swing-from: -48deg;
+  --bear-swing-to: 36deg;
+  transform: rotate(-48deg);
 }
 .bear-svg[data-pose="run"] .bear-armR {
-  --bear-swing-from: 8deg;
-  --bear-swing-to: 20deg;
-  transform: rotate(14deg);
+  --bear-swing-from: 48deg;
+  --bear-swing-to: -36deg;
+  transform: rotate(48deg);
 }
 .bear-svg[data-pose="run"] .bear-head { transform: rotate(4deg); }
 
@@ -306,70 +300,54 @@
 .bear-svg[data-pose="wave"] .bear-armL { transform: rotate(12deg); }
 .bear-svg[data-pose="wave"] .bear-head { transform: rotate(3deg); }
 
-.bear-svg[data-pose="wobble"] .bear-mv { transform: rotate(-11deg) translateX(-2px); }
-.bear-svg[data-pose="wobble"] .bear-head { transform: rotate(3deg); }
-.bear-svg[data-pose="wobble"] .bear-armL { transform: rotate(36deg); }
-.bear-svg[data-pose="wobble"] .bear-armR { transform: rotate(-15deg); }
-.bear-svg[data-pose="wobble"] .bear-legL { transform: rotate(6deg); }
-.bear-svg[data-pose="wobble"] .bear-legR { transform: rotate(-7deg); }
+.bear-svg[data-pose="wobble"] .bear-mv { transform: rotate(-14deg) translateX(-5px); }
+.bear-svg[data-pose="wobble"] .bear-head { transform: rotate(12deg); }
+.bear-svg[data-pose="wobble"] .bear-armL { transform: rotate(70deg); }
+.bear-svg[data-pose="wobble"] .bear-armR { transform: rotate(-55deg); }
+.bear-svg[data-pose="wobble"] .bear-legL { transform: rotate(12deg); }
+.bear-svg[data-pose="wobble"] .bear-legR { transform: rotate(-16deg); }
 
-.bear-svg[data-pose="crawl"] .bear-mv { transform: translateY(10px); }
-.bear-svg[data-pose="crawl"] .bear-root { transform: rotate(72deg); }
-.bear-svg[data-pose="crawl"] .bear-head { transform: rotate(-72deg); }
-.bear-svg[data-pose="crawl"] .bear-armL {
-  --bear-swing-from: -68deg;
-  --bear-swing-to: -80deg;
-  transform: rotate(-68deg);
-}
-.bear-svg[data-pose="crawl"] .bear-armR {
-  --bear-swing-from: -88deg;
-  --bear-swing-to: -70deg;
-  transform: rotate(-88deg);
-}
-.bear-svg[data-pose="crawl"] .bear-legL {
-  --bear-swing-from: -78deg;
-  --bear-swing-to: -62deg;
-  transform: rotate(-78deg);
-}
-.bear-svg[data-pose="crawl"] .bear-legR {
-  --bear-swing-from: -58deg;
-  --bear-swing-to: -82deg;
-  transform: rotate(-58deg);
-}
+.bear-svg .bear-crawl-rig { display: none; }
+.bear-svg[data-pose="crawl"] .bear-root { display: none; }
+.bear-svg[data-pose="crawl"] .bear-crawl-rig { display: inline; }
+.bear-svg .bear-crawl-leg-back { transform-origin: 122px 270px; transform: rotate(-15deg); }
+.bear-svg .bear-crawl-leg-front { transform-origin: 106px 269px; transform: rotate(12deg); }
+.bear-svg .bear-crawl-arm-back { transform-origin: 207px 267px; transform: rotate(14deg); }
+.bear-svg .bear-crawl-arm-front { transform-origin: 234px 263px; transform: rotate(-12deg); }
 
-.bear-svg[data-pose="point"] .bear-armR { transform: rotate(-92deg); }
+.bear-svg[data-pose="point"] .bear-armR { transform: rotate(-93deg); }
 .bear-svg[data-pose="point"] .bear-armL { transform: rotate(10deg); }
 .bear-svg[data-pose="point"] .bear-head { transform: rotate(4deg); }
 
 .bear-svg[data-pose="pat"] .bear-armL { transform: rotate(8deg); }
 .bear-svg[data-pose="pat"] .bear-armR {
-  --bear-swing-from: 70deg;
-  --bear-swing-to: 60deg;
-  transform: rotate(70deg);
+  --bear-swing-from: -40deg;
+  --bear-swing-to: -32deg;
+  transform: rotate(-40deg);
 }
-.bear-svg[data-pose="pat"] .bear-head { transform: rotate(-5deg); }
+.bear-svg[data-pose="pat"] .bear-head { transform: rotate(5deg); }
 
-.bear-svg[data-pose="shake"] .bear-mv { transform: translateX(-3px); }
-.bear-svg[data-pose="shake"] .bear-head { transform: rotate(-2deg); }
+.bear-svg[data-pose="shake"] .bear-mv { transform: translateX(-8px) rotate(-6deg); }
+.bear-svg[data-pose="shake"] .bear-head { transform: rotate(6deg); }
 .bear-svg[data-pose="shake"] .bear-armL {
-  --bear-swing-from: 75deg;
-  --bear-swing-to: 68deg;
-  transform: rotate(75deg);
+  --bear-swing-from: 52deg;
+  --bear-swing-to: 70deg;
+  transform: rotate(52deg);
 }
 .bear-svg[data-pose="shake"] .bear-armR {
-  --bear-swing-from: -75deg;
-  --bear-swing-to: -68deg;
-  transform: rotate(-75deg);
+  --bear-swing-from: -52deg;
+  --bear-swing-to: -70deg;
+  transform: rotate(-52deg);
 }
 .bear-svg[data-pose="shake"] .bear-legL { transform: rotate(4deg); }
 .bear-svg[data-pose="shake"] .bear-legR { transform: rotate(-4deg); }
 
-.bear-svg[data-pose="turn"] .bear-root { transform: rotate(-3deg) scaleX(0.88); }
-.bear-svg[data-pose="turn"] .bear-head { transform: rotate(4deg) scaleX(1.08); }
-.bear-svg[data-pose="turn"] .bear-armL { transform: rotate(14deg); }
-.bear-svg[data-pose="turn"] .bear-armR { transform: rotate(-14deg); }
-.bear-svg[data-pose="turn"] .bear-legL { transform: rotate(-14deg); }
-.bear-svg[data-pose="turn"] .bear-legR { transform: rotate(10deg); }
+.bear-svg[data-pose="turn"] .bear-root { transform: rotate(-5deg) scaleX(0.73); }
+.bear-svg[data-pose="turn"] .bear-head { transform: translateX(14px) rotate(9deg); }
+.bear-svg[data-pose="turn"] .bear-armL { transform: rotate(26deg); }
+.bear-svg[data-pose="turn"] .bear-armR { transform: rotate(-26deg); }
+.bear-svg[data-pose="turn"] .bear-legL { transform: rotate(-20deg); }
+.bear-svg[data-pose="turn"] .bear-legR { transform: rotate(15deg); }
 .bear-svg[data-pose="turn"] .bear-scarf { transform: rotate(7deg); }
 
 .bear-svg[data-pose="snap"] .bear-mv { transform: rotate(-1deg); }
@@ -440,24 +418,44 @@
 }
 
 @keyframes bear-wobble-body {
-  0%, 100% { transform: rotate(-6deg); }
-  34% { transform: rotate(5deg); }
-  68% { transform: rotate(-3deg); }
+  0%, 100% { transform: rotate(-14deg) translateX(-5px); }
+  34% { transform: rotate(13deg) translateX(5px); }
+  68% { transform: rotate(-11deg) translateX(-4px); }
 }
 
 @keyframes bear-wobble-head {
-  0%, 100% { transform: rotate(8deg); }
-  34% { transform: rotate(-3deg); }
-  68% { transform: rotate(5deg); }
+  0%, 100% { transform: rotate(12deg); }
+  34% { transform: rotate(-12deg); }
+  68% { transform: rotate(10deg); }
 }
 
 @keyframes bear-crawl-glide {
-  0%, 100% { transform: translate(0, 10px); }
-  50% { transform: translate(9px, 7px); }
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(11px); }
+}
+
+@keyframes bear-crawl-step-front {
+  0%, 100% { transform: rotate(-12deg); }
+  50% { transform: rotate(12deg); }
+}
+
+@keyframes bear-crawl-step-back {
+  0%, 100% { transform: rotate(-15deg); }
+  50% { transform: rotate(12deg); }
+}
+
+@keyframes bear-crawl-step-leg {
+  0%, 100% { transform: rotate(12deg); }
+  50% { transform: rotate(-15deg); }
+}
+
+@keyframes bear-crawl-step-arm-back {
+  0%, 100% { transform: rotate(14deg); }
+  50% { transform: rotate(-12deg); }
 }
 
 @keyframes bear-point-arm {
-  0%, 100% { transform: rotate(-92deg); }
+  0%, 100% { transform: rotate(-93deg); }
   50% { transform: rotate(-96deg); }
 }
 
@@ -474,21 +472,22 @@
 }
 
 @keyframes bear-shake-body {
-  0%, 100% { transform: translateX(-8px); }
-  22% { transform: translateX(8px); }
-  44% { transform: translateX(-6px); }
-  66% { transform: translateX(6px); }
+  0%, 100% { transform: translateX(-8px) rotate(-6deg); }
+  22% { transform: translateX(8px) rotate(6deg); }
+  44% { transform: translateX(-6px) rotate(-5deg); }
+  66% { transform: translateX(6px) rotate(5deg); }
 }
 
 @keyframes bear-turn-body {
-  0%, 100% { transform: rotate(-3deg) scaleX(0.88); }
-  25% { transform: rotate(-1deg) scaleX(0.72); }
-  50% { transform: rotate(1deg) scaleX(0.56); }
-  75% { transform: rotate(-1deg) scaleX(0.72); }
+  0%, 100% { transform: rotate(-5deg) scaleX(0.73); }
+  25% { transform: rotate(-1deg) scaleX(0.52); }
+  50% { transform: rotate(1deg) scaleX(-0.73); }
+  75% { transform: rotate(-1deg) scaleX(0.52); }
 }
 
 @keyframes bear-turn-arrow {
-  to { transform: rotate(360deg); }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }
 
 @keyframes bear-snap-arm {
@@ -499,7 +498,7 @@
 
 @keyframes bear-poke-arm {
   0%, 100% { transform: rotate(-122deg); }
-  50% { transform: rotate(-124deg); }
+  50% { transform: rotate(-126deg); }
 }
 
 @keyframes bear-float {
@@ -588,11 +587,17 @@
   animation: bear-wobble-head 1.2s ease-in-out 2 both;
 }
 
-.bear-stage.is-action:not(.is-static)[data-pose="crawl"] .bear-legL,
-.bear-stage.is-action:not(.is-static)[data-pose="crawl"] .bear-legR,
-.bear-stage.is-action:not(.is-static)[data-pose="crawl"] .bear-armL,
-.bear-stage.is-action:not(.is-static)[data-pose="crawl"] .bear-armR {
-  animation: bear-swing 0.8s ease-in-out 2 both;
+.bear-stage.is-action:not(.is-static)[data-pose="crawl"] .bear-crawl-arm-front {
+  animation: bear-crawl-step-front 0.8s ease-in-out 4 both;
+}
+.bear-stage.is-action:not(.is-static)[data-pose="crawl"] .bear-crawl-leg-back {
+  animation: bear-crawl-step-back 0.8s ease-in-out 4 both;
+}
+.bear-stage.is-action:not(.is-static)[data-pose="crawl"] .bear-crawl-leg-front {
+  animation: bear-crawl-step-leg 0.8s ease-in-out 4 both;
+}
+.bear-stage.is-action:not(.is-static)[data-pose="crawl"] .bear-crawl-arm-back {
+  animation: bear-crawl-step-arm-back 0.8s ease-in-out 4 both;
 }
 .bear-stage.is-action:not(.is-static)[data-pose="crawl"] .bear-mv {
   animation: bear-crawl-glide 1.6s ease-in-out 2 both;
@@ -624,8 +629,7 @@
   animation: bear-turn-body 1.6s ease-in-out 2 both;
 }
 .bear-stage.is-action:not(.is-static)[data-pose="turn"] .prop-turn-arrow {
-  animation: bear-turn-arrow 1.6s linear 2 both;
-  transform-origin: 170px 321px;
+  animation: bear-turn-arrow 1.6s ease-in-out 2 both;
 }
 
 .bear-stage.is-action:not(.is-static)[data-pose="snap"] .bear-armR {

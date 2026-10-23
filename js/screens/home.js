@@ -44,6 +44,7 @@
       const showtimeDone = summary.showtime.done;
       const allChaptersDone = summary.chapters.done === summary.chapters.totalChapters;
       const badgeCount = rows.filter((r) => r.done).length;
+      const chapterPoses = { 'self-intro': 'wave', 'action-words': 'run', 'i-can': 'jump', 'new-actions': 'crawl', 'new-i-can': 'clap' };
 
       const screen = ui.el('section', { class: 'screen screen--home' });
 
@@ -145,6 +146,7 @@
         iconName: primaryIcon,
         variant: 'primary',
         size: 'xl',
+        className: 'kid-action',
         testId: 'home-primary',
         onClick: () => {
           BEAR.audio.unlock();
@@ -196,7 +198,8 @@
             '，' + (row.stars || 0) + ' 颗星'
         });
         const badge = ui.el('span', { class: 'map-node__badge', 'aria-hidden': 'true' });
-        badge.appendChild(ui.icon((chapter.badge && chapter.badge.icon) || 'leaf'));
+        badge.appendChild(ui.el('span', { class: 'map-node__bear' }, BEAR.gameKit.bearMini({ pose: chapterPoses[chapter.id] || 'wave', face: 'happy' })));
+        badge.appendChild(ui.icon((chapter.badge && chapter.badge.icon) || 'leaf', 'map-node__badge-icon'));
         if (row.done) {
           badge.appendChild(ui.el('span', { class: 'map-node__check' }, ui.icon('check')));
         }
@@ -212,12 +215,14 @@
         if (row.done) statusText = '已完成';
         else if (isNext) statusText = row.phase > 0 ? '继续第 ' + (row.phase + 1) + ' 阶段' : '下一章';
         else statusText = '未开始';
+        meta.appendChild(ui.el('span', { class: 'map-node__cue', 'aria-hidden': 'true' }, ui.icon(row.done ? 'check' : isNext ? 'play' : 'dot')));
         meta.appendChild(ui.el('span', { class: 'map-node__status', text: statusText }));
         text.appendChild(meta);
         btn.appendChild(text);
         btn.appendChild(ui.el('span', { class: 'map-node__arrow', 'aria-hidden': 'true' }, ui.icon('arrow-right')));
         btn.addEventListener('click', () => {
           BEAR.audio.unlock();
+          if (BEAR.sfx) BEAR.sfx.unlock();
           BEAR.router.go('#/unit/' + unit.id + '/chapter/' + chapter.id);
         });
         li.appendChild(btn);

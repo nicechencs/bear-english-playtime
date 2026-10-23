@@ -1,7 +1,7 @@
 /* App boot: settings, global audio helpers, router, PWA lifecycle. */
 (function (root) {
   const BEAR = root.BEAR = root.BEAR || {};
-  const APP_VERSION = '1.0.3';
+  const APP_VERSION = '1.0.4';
   let lastAudioErrorAt = 0;
   let installPrompt = null;
   let registration = null;

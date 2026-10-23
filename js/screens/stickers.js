@@ -154,6 +154,8 @@
       crownArt.appendChild(ui.icon(summary.showtime.crown || allChaptersDone ? 'trophy' : 'lock'));
       crown.appendChild(crownArt);
       const crownCopy = ui.el('div', { class: 'crown-card__copy' });
+      crownCopy.appendChild(ui.el('div', { class: 'crown-card__bear', 'aria-hidden': 'true' },
+        BEAR.gameKit.bearMini({ pose: summary.showtime.crown ? 'jump' : 'wave', face: 'happy' })));
       crownCopy.appendChild(ui.el('h3', {
         class: 'crown-card__title',
         text: summary.showtime.crown ? '皇冠已经戴在小熊头上' :
@@ -173,6 +175,7 @@
           iconName: allChaptersDone ? 'trophy' : 'arrow-left',
           variant: 'soft',
           size: 'sm',
+          className: 'kid-action',
           onClick: () => BEAR.router.go(
             allChaptersDone ? '#/unit/' + unit.id + '/showtime' : '#/unit/' + unit.id
           )
@@ -183,6 +186,7 @@
           iconName: 'refresh',
           variant: 'soft',
           size: 'sm',
+          className: 'kid-action',
           onClick: () => BEAR.router.go('#/unit/' + unit.id + '/showtime')
         }));
       }

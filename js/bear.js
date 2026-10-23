@@ -195,10 +195,11 @@
               '<ellipse class="bear-fill-pad" cx="222" cy="300" rx="3" ry="2.2" opacity=".42"/>' +
             '</g>' +
             '<g class="bear-hand bear-hand--snap" aria-hidden="true">' +
-              '<rect class="bear-fill-body" x="213" y="276" width="7" height="24" rx="3.5" transform="rotate(-14 222 274)"/>' +
-              '<rect class="bear-fill-body" x="224" y="276" width="7" height="24" rx="3.5" transform="rotate(14 222 274)"/>' +
-              sparkle(222, 306, 9, 'bear-fill-sun', 'opacity=".95"') +
-              '<circle class="bear-fill-action" cx="222" cy="306" r="2.6"/>' +
+              '<path class="bear-line-ink" d="M216 287q10 4 12-6" stroke-width="9" opacity=".25"/>' +
+              '<path class="bear-line-pad" d="M215 287q10 4 12-6" stroke-width="5"/>' +
+              '<rect class="bear-fill-body" x="222" y="274" width="8" height="26" rx="4" transform="rotate(-11 222 274)"/>' +
+              sparkle(222, 305, 9, 'bear-fill-sun', 'opacity=".95"') +
+              '<circle class="bear-fill-action" cx="222" cy="305" r="2.6"/>' +
             '</g>' +
             '<g class="bear-hand bear-hand--pat" aria-hidden="true">' +
               '<ellipse class="bear-fill-pad" cx="222" cy="280" rx="10" ry="5.5" opacity=".4"/>' +
@@ -214,6 +215,31 @@
           '</g>' +
 
           headMarkup() +
+        '</g>' +
+        '<g class="bear-crawl-rig" aria-hidden="true">' +
+          '<circle class="bear-fill-soft" cx="100" cy="243" r="19"/>' +
+          '<g class="bear-crawl-leg bear-crawl-leg-back">' +
+            '<rect class="bear-fill-soft" x="110" y="265" width="29" height="59" rx="14"/>' +
+            '<ellipse class="bear-fill-pad" cx="125" cy="324" rx="23" ry="11"/>' +
+          '</g>' +
+          '<g class="bear-crawl-leg bear-crawl-arm-back">' +
+            '<rect class="bear-fill-body" x="195" y="262" width="25" height="58" rx="12"/>' +
+            '<ellipse class="bear-fill-pad" cx="208" cy="321" rx="21" ry="11"/>' +
+          '</g>' +
+          '<ellipse class="bear-fill-body" cx="169" cy="251" rx="81" ry="43"/>' +
+          '<ellipse class="bear-fill-muzzle" cx="174" cy="263" rx="55" ry="27"/>' +
+          '<g class="bear-crawl-leg bear-crawl-leg-front">' +
+            '<rect class="bear-fill-soft" x="91" y="262" width="31" height="62" rx="15"/>' +
+            '<ellipse class="bear-fill-pad" cx="105" cy="324" rx="24" ry="11"/>' +
+          '</g>' +
+          '<g class="bear-crawl-leg bear-crawl-arm-front">' +
+            '<rect class="bear-fill-body" x="218" y="259" width="30" height="63" rx="15"/>' +
+            '<ellipse class="bear-fill-soft" cx="233" cy="318" rx="17" ry="16"/>' +
+            '<ellipse class="bear-fill-pad" cx="233" cy="324" rx="23" ry="10"/>' +
+          '</g>' +
+          '<path class="bear-fill-scarf" d="M214 240q18 0 31 14l-8 15q-11-12-27-12Z"/>' +
+          '<path class="bear-fill-scarf" d="M220 257q-13 14-7 31l11-4q-3-13 5-20Z"/>' +
+          '<g transform="translate(118 93) scale(.78)">' + headMarkup() + '</g>' +
         '</g>' +
       '</g>';
   }
@@ -306,17 +332,29 @@
 
         '<g class="prop prop-point">' +
           '<g class="prop-point-dot">' +
-            '<circle class="bear-line-action" cx="315" cy="210" r="15" stroke-width="3" opacity=".45"/>' +
-            '<circle class="bear-fill-action" cx="315" cy="210" r="8"/>' +
-            '<circle class="bear-fill-surface" cx="315" cy="210" r="3"/>' +
+            '<circle class="bear-line-action" cx="306" cy="210" r="15" stroke-width="3" opacity=".45"/>' +
+            '<circle class="bear-fill-action" cx="306" cy="210" r="8"/>' +
+            '<circle class="bear-fill-surface" cx="306" cy="210" r="3"/>' +
           '</g>' +
-          '<path class="bear-line-action" d="M298 188l-7-9M333 192l6-7M296 226l-9 3M334 219l5 4" stroke-width="3.5" opacity=".66"/>' +
+          '<path class="bear-line-action" d="M291 188l-7-9M324 192l7-7M286 226l-9 3M325 219l6 4" stroke-width="3.5" opacity=".66"/>' +
         '</g>' +
 
         '<g class="prop prop-pat">' +
-          heart(199, 214, 8, 'bear-fill-cheek', 'opacity=".8"') +
-          '<path class="bear-line-action" d="M154 246q9 7 18 0M157 257q8 6 16 0M161 268q5 4 10 0" stroke-width="5" opacity=".72"/>' +
-          '<path class="bear-line-action" d="M187 232l9-8" stroke-width="4" opacity=".55"/>' +
+          '<ellipse class="bear-fill-soft" cx="272" cy="316" rx="21" ry="24"/>' +
+          '<circle class="bear-fill-soft" cx="253" cy="270" r="8"/>' +
+          '<circle class="bear-fill-soft" cx="281" cy="270" r="8"/>' +
+          '<circle class="bear-fill-muzzle" cx="253" cy="270" r="4"/>' +
+          '<circle class="bear-fill-muzzle" cx="281" cy="270" r="4"/>' +
+          '<circle class="bear-fill-soft" cx="267" cy="287" r="20"/>' +
+          '<ellipse class="bear-fill-muzzle" cx="267" cy="294" rx="11" ry="8"/>' +
+          '<circle class="bear-fill-ink" cx="260" cy="284" r="2.2"/>' +
+          '<circle class="bear-fill-ink" cx="274" cy="284" r="2.2"/>' +
+          '<ellipse class="bear-fill-ink" cx="267" cy="290" rx="3.6" ry="2.6"/>' +
+          '<path class="bear-line-ink" d="M263 297q4 4 8 0" stroke-width="1.8"/>' +
+          '<ellipse class="bear-fill-pad" cx="260" cy="337" rx="12" ry="6"/>' +
+          '<ellipse class="bear-fill-pad" cx="283" cy="337" rx="12" ry="6"/>' +
+          heart(300, 249, 8, 'bear-fill-cheek', 'opacity=".85"') +
+          '<path class="bear-line-action" d="M251 256l-5-6M280 254l4-7" stroke-width="3" opacity=".72"/>' +
         '</g>' +
 
         '<g class="prop prop-shake">' +
@@ -330,9 +368,9 @@
 
         '<g class="prop prop-turn">' +
           '<g class="prop-turn-arrow">' +
-            '<path class="bear-line-action" d="M74 314a96 27 0 1 0 192 0" stroke-width="5" stroke-dasharray="9 13" opacity=".72"/>' +
-            '<path class="bear-fill-action" d="M262 300l16 4-10 13Z" opacity=".82"/>' +
-            '<path class="bear-fill-action" d="M78 300l-16 4 10 13Z" opacity=".82"/>' +
+            '<path class="bear-line-action" d="M81 202c-1-73 53-121 111-119M260 126c35 40 29 103-8 145" stroke-width="5" stroke-dasharray="9 12" opacity=".76"/>' +
+            '<path class="bear-fill-action" d="M177 72l18 13-21 9Z" opacity=".88"/>' +
+            '<path class="bear-fill-action" d="M242 258l9 21 12-19Z" opacity=".88"/>' +
           '</g>' +
         '</g>' +
 
@@ -344,15 +382,13 @@
         '<g class="prop prop-poke">' +
           '<g transform="translate(3 32)">' +
             '<g class="prop-poke-balloon">' +
-              '<path class="bear-fill-sun" d="M285 83c16 0 28 12 28 28 0 20-16 36-28 36s-28-16-28-36c0-16 12-28 28-28Z"/>' +
-              '<path class="bear-fill-surface" d="M270 102c2-8 8-13 14-14 2 4 1 9-3 12-3 2-7 3-11 2Z" opacity=".38"/>' +
-              '<path class="bear-line-action" d="M258 140q12 8 24 1" stroke-width="3.4" opacity=".5"/>' +
+              '<path class="bear-fill-sun" d="M286 83c16 0 28 12 28 28 0 20-16 36-28 36s-28-16-28-36c0-16 12-28 28-28Z"/>' +
+              '<path class="bear-fill-surface" d="M271 102c2-8 8-13 14-14 2 4 1 9-3 12-3 2-7 3-11 2Z" opacity=".38"/>' +
+              '<path class="bear-line-action" d="M259 140q12 8 24 1" stroke-width="3.4" opacity=".5"/>' +
             '</g>' +
           '</g>' +
-          '<path class="bear-line-action" d="M245 185l-10 4M250 199l-11 1M260 166l-7-8" stroke-width="4.5" opacity=".72"/>' +
-          '<circle class="bear-fill-action" cx="248" cy="176" r="3" opacity=".6"/>' +
-          '<path class="bear-poke-finger" d="M266 181 280 174" stroke-width="7"/>' +
-          '<circle class="bear-fill-pad" cx="280" cy="174" r="3" opacity=".42"/>' +
+          '<path class="bear-line-action" d="M266 184l-7-8M276 183l2-11" stroke-width="3.5" opacity=".72"/>' +
+          '<circle class="bear-fill-action" cx="273" cy="177" r="3" opacity=".6"/>' +
         '</g>' +
 
         '<g class="prop prop-sleepy">' +

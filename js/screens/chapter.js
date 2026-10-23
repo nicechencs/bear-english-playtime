@@ -231,6 +231,13 @@
         const badgeIcon = isShowtime ? 'trophy' : (chapter.badge && chapter.badge.icon) || 'leaf';
         art.appendChild(ui.el('span', { class: 'chapter-start__badge', 'aria-hidden': 'true' }, ui.icon(badgeIcon)));
 
+        const steps = ui.el('div', { class: 'chapter-start__steps', role: 'img', 'aria-label': '听一听、做一做、说一说' }, [
+          ui.icon('speaker'), ui.icon('arrow-right', 'chapter-start__step-arrow'),
+          ui.icon('play'), ui.icon('arrow-right', 'chapter-start__step-arrow'),
+          ui.icon('sound-wave')
+        ]);
+        art.appendChild(steps);
+
         const copy = ui.el('div', { class: 'chapter-start__copy' });
         copy.appendChild(ui.el('p', {
           class: 'eyebrow',
@@ -245,12 +252,40 @@
           class: 'chapter-start__zh',
           text: isShowtime ? '毕业演出' : chapter.zhTitle
         }));
-        copy.appendChild(ui.el('p', {
-          class: 'chapter-start__desc',
-          text: isShowtime
-            ? '把学过的动作和句子串起来，完成 3 个挑战，就能拿到皇冠。'
-            : '3 个小阶段，听一听、做一做、说一说。完成每个阶段，就能得到一颗星。'
+        const howTo = parentTip(isShowtime
+          ? '把学过的动作和句子串起来，完成 3 个挑战，就能拿到皇冠。'
+          : '3 个小阶段，听一听、做一做、说一说。完成每个阶段，就能得到一颗星。', '家长看玩法');
+
+        const actions = ui.el('div', { class: 'chapter-start__actions' });
+        let primaryLabel;
+        if (isShowtime) primaryLabel = done ? '再看一次演出' : '开始演出';
+        else if (done) primaryLabel = '再玩一次';
+        else if (startAt > 0) primaryLabel = '继续 · ' + chapter.phases[startAt].zhTitle;
+        else primaryLabel = '开始学习';
+        const startBtn = ui.button({
+          label: primaryLabel,
+          iconName: 'play',
+          variant: 'primary',
+          size: 'xl',
+          className: 'kid-action',
+          onClick: () => beginSession(startAt)
+        });
+        actions.appendChild(startBtn);
+        if (!isShowtime && !done && startAt > 0) {
+          actions.appendChild(ui.button({
+            label: '从头开始',
+            iconName: 'refresh',
+            variant: 'secondary',
+            onClick: () => beginSession(0)
+          }));
+        }
+        actions.appendChild(ui.button({
+          label: '回到地图',
+          iconName: 'home',
+          variant: 'ghost',
+          onClick: goHome
         }));
+        copy.appendChild(actions);
 
         if (!isShowtime) {
           const starLine = ui.el('div', { class: 'chapter-start__stars' });
@@ -262,10 +297,7 @@
           copy.appendChild(starLine);
           const preview = ui.el('div', { class: 'phase-preview' });
           chapter.phases.forEach((phase, i) => {
-            preview.appendChild(ui.el('span', {
-              class: 'pill' + (done || i < (record.phase || 0) ? ' pill--leaf' : ''),
-              text: (i + 1) + ' · ' + phase.zhTitle
-            }));
+            preview.appendChild(stepPreview(phase, i, done || i < (record.phase || 0)));
           });
           copy.appendChild(preview);
           if (chapter.tip) {
@@ -283,41 +315,20 @@
           }
         }
 
-        const actions = ui.el('div', { class: 'chapter-start__actions' });
-        let primaryLabel;
-        if (isShowtime) primaryLabel = done ? '再看一次演出' : '开始演出';
-        else if (done) primaryLabel = '再玩一次';
-        else if (startAt > 0) primaryLabel = '继续 · ' + chapter.phases[startAt].zhTitle;
-        else primaryLabel = '开始学习';
-        const startBtn = ui.button({
-          label: primaryLabel,
-          iconName: 'play',
-          variant: 'primary',
-          size: 'xl',
-          onClick: () => beginSession(startAt)
-        });
-        actions.appendChild(startBtn);
-
-        if (!isShowtime && !done && startAt > 0) {
-          actions.appendChild(ui.button({
-            label: '从头开始',
-            iconName: 'refresh',
-            variant: 'secondary',
-            onClick: () => beginSession(0)
-          }));
-        }
-        actions.appendChild(ui.button({
-          label: '回到地图',
-          iconName: 'home',
-          variant: 'ghost',
-          onClick: goHome
-        }));
-        copy.appendChild(actions);
+        copy.appendChild(howTo);
 
         card.appendChild(art);
         card.appendChild(copy);
         main.appendChild(card);
         focusMainHeading();
+      }
+
+      function stepPreview(phase, index, completed) {
+        const pill = ui.el('span', { class: 'pill' + (completed ? ' pill--leaf' : '') });
+        pill.appendChild(ui.el('span', { class: 'phase-preview__icon', 'aria-hidden': 'true' },
+          ui.icon(BEAR.gameKit.activityIcon(phase.activities && phase.activities[0]))));
+        pill.appendChild(ui.el('span', { text: (index + 1) + ' · ' + phase.zhTitle }));
+        return pill;
       }
 
       function parentTip(text, label) {
@@ -371,17 +382,20 @@
         const titles = ui.el('div', { class: 'lesson__titles' });
         if (isShowtime) {
           titles.appendChild(ui.el('p', { class: 'lesson__eyebrow', text: 'Showtime · 毕业演出' }));
-          titles.appendChild(ui.el('h2', { class: 'lesson__title', text: '第 ' + (activityIndex + 1) + ' 个挑战' }));
+          const title = ui.el('h2', { class: 'lesson__title' });
+          title.appendChild(ui.icon(BEAR.gameKit.activityIcon(chapter.activities[activityIndex]), 'lesson__activity-icon'));
+          title.appendChild(ui.el('span', { text: '第 ' + (activityIndex + 1) + ' 个挑战' }));
+          titles.appendChild(title);
         } else {
           const phase = currentPhase();
           titles.appendChild(ui.el('p', {
             class: 'lesson__eyebrow',
             text: '第 ' + (phaseIndex + 1) + ' / 3 阶段 · ' + (phase ? phase.title : '')
           }));
-          titles.appendChild(ui.el('h2', {
-            class: 'lesson__title',
-            text: phase ? phase.zhTitle : ''
-          }));
+          const title = ui.el('h2', { class: 'lesson__title' });
+          title.appendChild(ui.icon(BEAR.gameKit.activityIcon(phase && phase.activities && phase.activities[activityIndex]), 'lesson__activity-icon'));
+          title.appendChild(ui.el('span', { text: phase ? phase.zhTitle : '' }));
+          titles.appendChild(title);
         }
         const progress = ui.el('div', { class: 'lesson__progress' });
         if (!isShowtime) {
@@ -485,6 +499,7 @@
         main.innerHTML = '';
         const wrap = ui.el('div', { class: 'phase-done' });
         wrap.appendChild(ui.el('div', { class: 'phase-done__star', 'aria-hidden': 'true' }, ui.icon('star')));
+        wrap.appendChild(ui.el('div', { class: 'phase-done__bear', 'aria-hidden': 'true' }, BEAR.gameKit.bearMini({ pose: CHAPTER_POSES[chapter.id] || 'wave', face: 'happy' })));
         wrap.appendChild(ui.el('p', { class: 'result__kicker', text: '第 ' + completed + ' 阶段完成' }));
         wrap.appendChild(ui.el('h2', { class: 'phase-done__title', text: '得到一颗星！' }));
         wrap.appendChild(ui.starRow(completed, 3, { className: 'stars--lg phase-done__stars' }));
@@ -499,6 +514,7 @@
           iconName: 'arrow-right',
           variant: 'primary',
           size: 'xl',
+          className: 'kid-action',
           onClick: () => {
             BEAR.sfx.play('tap');
             phaseIndex += 1;
@@ -539,6 +555,8 @@
           class: 'result__badge' + (showtime ? ' result__badge--crown' : ''),
           'aria-hidden': 'true'
         }, ui.icon(badgeIcon)));
+        wrap.appendChild(ui.el('div', { class: 'result__bear', 'aria-hidden': 'true' },
+          BEAR.gameKit.bearMini({ pose: CHAPTER_POSES[chapter.id] || 'wave', face: 'happy' })));
         wrap.appendChild(ui.el('p', {
           class: 'result__kicker',
           text: showtime ? '毕业演出完成' : '章节完成'
@@ -568,6 +586,9 @@
           }));
         }
 
+        const actions = ui.el('div', { class: 'result__actions' });
+        wrap.appendChild(actions);
+
         if (!showtime && chapter.stickerIds && chapter.stickerIds.length) {
           const stickerWrap = ui.el('div', { class: 'result__stickers' });
           stickerWrap.appendChild(ui.el('p', {
@@ -585,13 +606,13 @@
           wrap.appendChild(stickerWrap);
         }
 
-        const actions = ui.el('div', { class: 'result__actions' });
         if (showtime) {
           actions.appendChild(ui.button({
             label: '回到地图',
             iconName: 'home',
             variant: 'primary',
             size: 'xl',
+            className: 'kid-action',
             onClick: goHome
           }));
           actions.appendChild(ui.button({
@@ -619,6 +640,7 @@
               iconName: 'arrow-right',
               variant: 'primary',
               size: 'xl',
+              className: 'kid-action',
               onClick: () => BEAR.router.go('#/unit/' + unit.id + '/chapter/' + nextChapter.id)
             }));
           } else if (!summary.showtime.done) {
@@ -627,6 +649,7 @@
               iconName: 'trophy',
               variant: 'primary',
               size: 'xl',
+              className: 'kid-action',
               onClick: () => BEAR.router.go('#/unit/' + unit.id + '/showtime')
             }));
           } else {
@@ -663,7 +686,6 @@
             }
           }));
         }
-        wrap.appendChild(actions);
         main.appendChild(wrap);
         ui.confetti({ count: showtime ? 52 : 40 });
         BEAR.audio.play('cheer');

@@ -146,6 +146,25 @@
     return ok;
   }
 
+  function activityIcon(activity) {
+    if (!activity) return 'play';
+    if (activity.type === 'doIt') return 'play';
+    if (activity.type === 'sayIt' || activity.type === 'introChat') return 'sound-wave';
+    return 'speaker';
+  }
+
+  function activityPose(activity, unit) {
+    if (!activity) return 'wave';
+    if (activity.type === 'doIt') return (activity.items || [])[0] || 'wave';
+    if (activity.type === 'sayIt') {
+      const key = activity.audioKey || '';
+      const match = key.match(/^(?:can|feel|im)_(.+)$/);
+      return match && unit.items[match[1]] ? unit.items[match[1]].pose : 'wave';
+    }
+    if (activity.type === 'findIt') return (activity.pool || [])[0] || 'wave';
+    return 'wave';
+  }
+
   function playIconButton(label, onClick) {
     return BEAR.ui.button({
       iconName: 'speaker',
@@ -194,6 +213,8 @@
     bearMini,
     bearFace,
     setBear,
+    activityIcon,
+    activityPose,
     playKey,
     playIconButton,
     preloadActivity,

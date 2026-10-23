@@ -43,11 +43,13 @@
 
     const wordBtn = ui.el('button', {
       type: 'button',
-      class: 'btn btn--secondary'
+      class: 'btn btn--secondary kid-audio',
+      'aria-label': '听单词'
     }, [ui.icon('speaker'), ui.el('span', { text: '听单词' })]);
     const sentenceBtn = ui.el('button', {
       type: 'button',
-      class: 'btn btn--ghost'
+      class: 'btn btn--ghost kid-audio',
+      'aria-label': '听句子'
     }, [ui.icon('sound-wave'), ui.el('span', { text: '听句子' })]);
 
     const actions = ui.el('div', { class: 'doit__actions' });
@@ -56,6 +58,7 @@
       iconName: 'check',
       variant: 'primary',
       size: 'xl',
+      className: 'kid-action',
       onClick: () => advance()
     });
 

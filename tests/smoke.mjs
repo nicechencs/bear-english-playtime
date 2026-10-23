@@ -133,6 +133,25 @@ test('home renders the five-chapter map without overflow', async (t) => {
   assert.deepEqual(errors, []);
 });
 
+test('George can start the picture-led chapter on a narrow phone', async (t) => {
+  const { page, errors } = await openPage(t, { width: 320, height: 568 });
+  await page.goto(base + '#/unit/unit1/chapter/self-intro', { waitUntil: 'networkidle' });
+
+  const play = page.getByRole('button', { name: '开始学习' });
+  const bottom = await play.evaluate((button) => button.getBoundingClientRect().bottom);
+  assert.ok(bottom <= 568, 'chapter start should be visible without scrolling');
+  assert.equal(await page.locator('.chapter-start__steps .icon').count(), 5);
+
+  await play.click();
+  const answer = page.locator('.answer-card').first();
+  await answer.waitFor({ state: 'visible' });
+  assert.match(await answer.textContent(), /My name is George\./);
+  assert.equal(await page.locator('.answer-card__name').textContent(), 'George');
+  await answer.click();
+  assert.equal(await page.evaluate(() => BEAR.audio.currentKey), 'a_name');
+  assert.deepEqual(errors, []);
+});
+
 test('chapter starts and Find It replay plays the again cue before the target', async (t) => {
   const { page, errors } = await openPage(t, { width: 390, height: 844 });
   await page.goto(base + '#/unit/unit1/chapter/i-can', { waitUntil: 'networkidle' });

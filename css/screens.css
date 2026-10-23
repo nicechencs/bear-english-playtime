@@ -67,31 +67,21 @@
 }
 
 .home-parent-btn.btn {
-  min-height: 56px;
+  min-height: 64px;
   padding: 8px 15px;
   border-radius: 17px;
   font-size: 0.88rem;
 }
 
 .home-top__actions .btn--icon {
-  width: 56px;
-  height: 56px;
-  min-height: 56px;
-  border-radius: 17px;
+  width: 64px;
+  height: 64px;
+  min-height: 64px;
+  border-radius: 19px;
 }
 
-@media (min-width: 360px) {
-  .home-top__actions .btn--icon {
-    width: 64px;
-    height: 64px;
-    min-height: 64px;
-    border-radius: 19px;
-  }
-
-  .home-parent-btn.btn {
-    min-width: 64px;
-    min-height: 64px;
-  }
+.home-parent-btn.btn {
+  min-width: 64px;
 }
 
 .hero {
@@ -321,10 +311,10 @@
   display: grid;
   flex: none;
   place-items: center;
-  width: 64px;
-  height: 64px;
+  width: 80px;
+  height: 80px;
   border: 1px solid var(--line);
-  border-radius: 20px;
+  border-radius: 22px;
   background: var(--surface-2);
   color: var(--ink);
 }
@@ -341,9 +331,31 @@
   color: var(--leaf);
 }
 
-.map-node__badge .icon {
-  width: 36px;
-  height: 36px;
+.map-node__badge .map-node__bear {
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.map-node__bear .bear-mini {
+  width: 76px;
+  height: auto;
+}
+
+.map-node__badge .map-node__badge-icon {
+  position: absolute;
+  right: -5px;
+  bottom: -5px;
+  width: 24px;
+  height: 24px;
+  padding: 3px;
+  border: 2px solid var(--surface);
+  border-radius: 50%;
+  background: var(--sun-soft);
+  color: var(--ink);
 }
 
 .map-node__check {
@@ -436,6 +448,17 @@
   border-color: transparent;
   background: var(--action);
   color: var(--on-action);
+}
+
+.map-node__cue {
+  display: inline-grid;
+  place-items: center;
+  gap: 2px;
+}
+
+.map-node__cue .icon {
+  width: 24px;
+  height: 24px;
 }
 
 .map-node--locked {
@@ -688,7 +711,7 @@
   }
 
   .home-parent-btn.btn {
-    width: 56px;
+    width: 64px;
     padding: 0;
   }
 
@@ -700,14 +723,23 @@
   }
 
   .map-node__badge {
-    width: 60px;
-    height: 60px;
-    border-radius: 19px;
+    width: 76px;
+    height: 76px;
+    border-radius: 21px;
   }
 
-  .map-node__badge .icon {
-    width: 34px;
-    height: 34px;
+  .map-node__badge .map-node__bear {
+    width: 72px;
+    height: 72px;
+  }
+
+  .map-node__bear .bear-mini {
+    width: 72px;
+  }
+
+  .map-node__badge .map-node__badge-icon {
+    width: 24px;
+    height: 24px;
   }
 
   .map-node__arrow {
@@ -774,6 +806,17 @@
   margin-top: 1px;
   font-size: clamp(1.02rem, 0.95rem + 0.4vw, 1.2rem);
   line-height: 1.35;
+}
+
+.lesson__activity-icon {
+  width: 34px;
+  height: 34px;
+  margin-right: 8px;
+  padding: 5px;
+  border-radius: 12px;
+  background: var(--sun-soft);
+  color: var(--action);
+  vertical-align: middle;
 }
 
 .lesson__progress {
@@ -962,6 +1005,36 @@
   font-size: 0.72rem;
 }
 
+.phase-preview__icon {
+  width: 25px;
+  height: 25px;
+  color: var(--action);
+}
+
+.chapter-start__steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 4vw, 32px);
+  width: min(100%, 290px);
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 22px;
+  background: color-mix(in srgb, var(--sun-soft) 42%, var(--surface));
+}
+
+.chapter-start__steps .icon {
+  width: 40px;
+  height: 40px;
+  color: var(--action);
+}
+
+.chapter-start__steps .chapter-start__step-arrow {
+  width: 21px;
+  height: 21px;
+  color: var(--ink-2);
+}
+
 .chapter-go {
   display: flex;
   flex-direction: column;
@@ -1034,6 +1107,10 @@
 
   .chapter-start__art .bear-stage {
     height: clamp(150px, 36vw, 200px);
+  }
+
+  .chapter-start__actions {
+    margin-top: 8px;
   }
 
   .chapter-start__actions {
@@ -1777,8 +1854,8 @@
   align-items: center;
   gap: 12px;
   width: 100%;
-  min-height: 68px;
-  padding: 11px 14px;
+  min-height: 84px;
+  padding: 9px 14px;
   border: 2px solid var(--line);
   border-radius: 18px;
   background: var(--surface);
@@ -1804,8 +1881,79 @@
 }
 
 .answer-card__icon .icon {
+  width: 26px;
+  height: 26px;
+}
+
+.answer-card__art {
+  position: relative;
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 68px;
+  height: 68px;
+  overflow: hidden;
+  border-radius: 17px;
+  background: var(--sun-soft);
+}
+
+.answer-card__name {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  max-width: 64px;
+  padding: 1px 4px;
+  border-radius: 7px;
+  background: var(--action);
+  color: var(--on-action);
+  font-family: var(--font-en);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.answer-card__number {
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
+  display: grid;
+  place-items: center;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background: var(--action);
+  color: var(--on-action);
+  font-family: var(--font-en);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.answer-card__word-cue {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 4px;
+  color: var(--action);
+  font-family: var(--font-en);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.answer-card__word-cue .icon {
   width: 22px;
   height: 22px;
+}
+
+.answer-card__art .bear-face,
+.answer-card__art .bear-mini {
+  width: 64px;
+  height: auto;
+}
+
+.answer-card__art .icon {
+  width: 36px;
+  height: 36px;
+  color: var(--action);
 }
 
 .answer-card__text {
@@ -2208,7 +2356,29 @@
 }
 
 @media (max-width: 359px) {
-  /* At 320px the two top actions leave no room for the English kicker. */
+  /* Keep the actions large by letting the brand text wrap on narrow phones. */
+  .home-top {
+    gap: 6px;
+  }
+
+  .brand {
+    gap: 6px;
+  }
+
+  .brand__bear {
+    width: 42px;
+    height: 42px;
+  }
+
+  .brand__bear .bear-mini {
+    width: 40px;
+    height: 40px;
+  }
+
+  .brand__zh {
+    font-size: 0.91rem;
+  }
+
   .brand__kicker {
     display: none;
   }
@@ -2284,6 +2454,23 @@
 .phase-done__star .icon {
   width: 56px;
   height: 56px;
+}
+
+.phase-done__bear,
+.result__bear {
+  display: grid;
+  place-items: center;
+  width: 116px;
+  height: 112px;
+  overflow: hidden;
+  border-radius: 28px;
+  background: var(--sun-soft);
+}
+
+.phase-done__bear .bear-mini,
+.result__bear .bear-mini {
+  width: 110px;
+  height: auto;
 }
 
 @keyframes star-pop {
@@ -2434,6 +2621,18 @@
   width: 100%;
 }
 
+@media (min-width: 600px) {
+  .result__badge,
+  .result__bear {
+    width: 96px;
+    height: 96px;
+  }
+
+  .result__bear .bear-mini {
+    width: 94px;
+  }
+}
+
 .result__again {
   font-size: 0.85rem;
 }
@@ -2516,6 +2715,27 @@
 .challenge-card__icon .icon {
   width: 27px;
   height: 27px;
+}
+
+.challenge-card__art {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 90px;
+  overflow: hidden;
+  border-radius: 18px;
+  background: var(--sun-soft);
+}
+
+.challenge-card__art .bear-mini {
+  width: 92px;
+  height: auto;
+}
+
+.challenge-card__art .icon {
+  width: 56px;
+  height: 56px;
+  color: var(--action);
 }
 
 .challenge-card__text {
@@ -2706,7 +2926,7 @@
 }
 
 .play-sheet__actions .btn {
-  min-height: 52px;
+  min-height: 64px;
 }
 
 .play-sheet__tip {
@@ -2734,6 +2954,21 @@
 
   .challenge-card__icon {
     flex: none;
+  }
+
+  .challenge-card__art {
+    flex: none;
+    width: 78px;
+    min-height: 78px;
+  }
+
+  .challenge-card__art .bear-mini {
+    width: 74px;
+  }
+
+  .challenge-card__art .icon {
+    width: 44px;
+    height: 44px;
   }
 
   .challenge-card__text {
@@ -3013,9 +3248,40 @@
   height: 38px;
 }
 
+.crown-card__bear {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--sun-soft);
+}
+
+.crown-card__bear .bear-mini {
+  width: 78px;
+  height: auto;
+}
+
+@media (max-width: 390px) {
+  .crown-card {
+    flex-wrap: wrap;
+  }
+
+  .crown-card__copy {
+    flex-basis: 100%;
+  }
+}
+
 .crown-card__copy {
   flex: 1;
   min-width: 0;
+}
+
+.crown-card__copy .crown-card__bear {
+  float: right;
+  margin-left: 10px;
 }
 
 .crown-card__copy .btn {

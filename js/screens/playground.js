@@ -65,12 +65,12 @@
 
       function challengeMeta(activity) {
         if (activity.type === 'findIt' && activity.mode === 'sentence') {
-          return { title: '句子挑战', sub: (activity.rounds || 5) + ' 题 · 听 I can …', icon: 'star' };
+          return { title: '句子挑战', sub: (activity.rounds || 5) + ' 题 · 听 I can …', icon: 'sound-wave' };
         }
         if (activity.type === 'findIt') {
           return { title: '听音找图', sub: (activity.rounds || 5) + ' 题 · 动作词', icon: 'speaker' };
         }
-        return { title: '听指令做动作', sub: (activity.items || []).length + ' 个动作 · 跟着做', icon: 'leaf' };
+        return { title: '听指令做动作', sub: (activity.items || []).length + ' 个动作 · 跟着做', icon: 'play' };
       }
 
       function openItem(item) {
@@ -89,6 +89,7 @@
           label: '听单词',
           iconName: 'speaker',
           variant: 'secondary',
+          className: 'kid-audio',
           onClick: () => {
             if (token !== modalToken) return;
             BEAR.audio.stopAll();
@@ -99,6 +100,7 @@
           label: isFeeling ? '听感觉' : '听句子',
           iconName: 'sound-wave',
           variant: 'soft',
+          className: 'kid-audio',
           onClick: () => {
             if (token !== modalToken) return;
             BEAR.audio.stopAll();
@@ -193,6 +195,8 @@
               'aria-label': meta.title + '，' + meta.sub
             });
             btn.appendChild(ui.el('span', { class: 'challenge-card__icon', 'aria-hidden': 'true' }, ui.icon(meta.icon)));
+            btn.appendChild(ui.el('span', { class: 'challenge-card__art', 'aria-hidden': 'true' },
+              BEAR.gameKit.bearMini({ pose: BEAR.gameKit.activityPose(activity, unit), face: 'happy' })));
             btn.appendChild(ui.el('span', { class: 'challenge-card__text' }, [
               ui.el('span', { class: 'challenge-card__title', text: meta.title }),
               ui.el('span', { class: 'challenge-card__sub', text: meta.sub })
@@ -289,6 +293,7 @@
           iconName: 'refresh',
           variant: 'primary',
           size: 'xl',
+          className: 'kid-action',
           onClick: () => startChallenge(activity, meta)
         }));
         actions.appendChild(ui.button({
